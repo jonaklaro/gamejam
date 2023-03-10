@@ -10,6 +10,11 @@ public class PlayerHealthTimer : MonoBehaviour
     [SerializeField] Image healthBarSpriteLeft = null;
     [SerializeField] Image healthBarSpriteRight = null;
 
+    private void Start()
+    {
+        healthTimer = Mathf.Min(healthTimer, healthTimerMax);
+    }
+
     void Update()
     {
         healthTimer -= Time.deltaTime;
