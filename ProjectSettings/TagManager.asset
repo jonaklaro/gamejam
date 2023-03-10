@@ -6,8 +6,9 @@ TagManager:
   tags:
   - Enemy
   - Friend
-  - Bullet
-  - BulletEnemy
+  - Resource
+  - Projectile
+  - ProjectileEnemy
   - Explosion
   layers:
   - Default
