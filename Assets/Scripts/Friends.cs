@@ -38,24 +38,22 @@ public class Friends : MonoBehaviour
   void Update()
   {
     if (playerInRange)
-        {
-            inRangeTime += Time.deltaTime;
+    {
+      inRangeTime += Time.deltaTime;
 
-            if (inRangeTime >= dropDelay)
-            {
-                // Drop the item
-                GameObject item = Instantiate(itemPrefab, transform.position + transform.up, Quaternion.identity);
-                item.GetComponent<Rigidbody>().AddForce(transform.forward * 5f, ForceMode.Impulse);
-
-                // Reset variables
-                playerInRange = false;
-                inRangeTime = 0f;
-            }
-        }
+      if (inRangeTime >= dropDelay)
+      {
+        DropItem();
+        // Reset variables
+        playerInRange = false;
+        inRangeTime = 0f;
+      }
+    }
   }
 
   void DropItem()
   {
-    //drop item
+    GameObject item = Instantiate(itemPrefab, transform.position + transform.up, Quaternion.identity);
+    item.GetComponent<Rigidbody>().AddForce(transform.forward * 5f, ForceMode.Impulse);
   }
 }
