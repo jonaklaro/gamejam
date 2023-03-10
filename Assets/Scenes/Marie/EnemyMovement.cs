@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
@@ -8,6 +7,8 @@ public class EnemyMovement : MonoBehaviour
     private float range;
 
     private float distance;
+    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private Transform shootPos;
 
     [SerializeField] private float speed;
 
@@ -35,10 +36,19 @@ public class EnemyMovement : MonoBehaviour
         transform.position =
             Vector2.MoveTowards(this.transform.position, playerPos.transform.position, speed * Time.deltaTime);
         transform.rotation = Quaternion.Euler(Vector3.forward * angle);
+        StartCoroutine(TimeBetweenShoots());
+    }
+    private IEnumerator TimeBetweenShoots()
+    {
+        yield return new WaitForSeconds(3);
+        StartShooting();
+        
+    }
+    
+    private void StartShooting()
+    {
+        GameObject bullet = Instantiate(bulletPrefab, shootPos.transform.position, Quaternion.identity);
+        
     }
 
-    private void StopAgresseion()
-    {
-       
-    }
 }
