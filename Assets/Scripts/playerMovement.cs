@@ -7,6 +7,8 @@ using UnityEngine;
 public class playerMovement : MonoBehaviour
 {
     public float moveSpeed = 5f;
+
+    [SerializeField] Animator animator;
     
 
     private void Update()
@@ -27,6 +29,10 @@ public class playerMovement : MonoBehaviour
 
         // Move the player in the movement direction
         transform.position += new Vector3(movementVector.x, movementVector.y, 0f) * moveSpeed * Time.deltaTime;
+
+        animator.SetFloat("Horizontal", movementVector.x);
+        animator.SetFloat("Vertical", movementVector.y);
+        animator.SetFloat("Speed", movementVector.sqrMagnitude);
 
         
     }
