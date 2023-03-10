@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 985317039}
   - component: {fileID: 985317038}
   - component: {fileID: 985317037}
+  - component: {fileID: 985317040}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -153,6 +154,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f94002f7eb914b841a5a71f2072ab6f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  acceleration: 100
+  maxSpeed: 10
+  decaleration: 10
 --- !u!212 &985317038
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -220,6 +224,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &985317040
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 985317036}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1132955403
 GameObject:
   m_ObjectHideFlags: 0
