@@ -6,6 +6,9 @@ public class EnemyMovement : MonoBehaviour
     [Header("Enemy Stats")] [SerializeField]
     private float range;
 
+    [SerializeField] private int shootTime;
+
+    [SerializeField] private bool isShooting;
     private float distance;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform shootPos;
@@ -36,13 +39,21 @@ public class EnemyMovement : MonoBehaviour
         transform.position =
             Vector2.MoveTowards(this.transform.position, playerPos.transform.position, speed * Time.deltaTime);
         transform.rotation = Quaternion.Euler(Vector3.forward * angle);
+        if(isShooting) return;
         StartCoroutine(TimeBetweenShoots());
     }
     private IEnumerator TimeBetweenShoots()
     {
-        yield return new WaitForSeconds(3);
-        StartShooting();
         
+        // Just in case avoid concurrent routines
+        if(isShooting) yield break;
+        isShooting = true;
+        StartShooting();
+
+        yield return new WaitForSeconds (shootTime);
+
+        isShooting = false;
+
     }
     
     private void StartShooting()
