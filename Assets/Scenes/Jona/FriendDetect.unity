@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 985317037}
   - component: {fileID: 985317040}
   - component: {fileID: 985317041}
+  - component: {fileID: 985317042}
   m_Layer: 0
   m_Name: player
   m_TagString: Player
@@ -270,6 +271,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &985317042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 985317036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62387aa2ce76d5a41a394f3c70031af4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1132955403
 GameObject:
   m_ObjectHideFlags: 0
@@ -419,6 +432,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5be98655a6af0c4d98e83e5f7cf822f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemPrefab: {fileID: 4393626089816851286, guid: a3a2dde36170e384ca14a9e8d2b4ef46, type: 3}
   dropDelay: 2
   dropRadius: 2
 --- !u!212 &2121897748
@@ -498,7 +512,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

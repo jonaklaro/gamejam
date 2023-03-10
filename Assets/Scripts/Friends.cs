@@ -5,12 +5,14 @@ using UnityEngine;
 public class Friends : MonoBehaviour
 {
 
-  // public GameObject itemPrefab; // The item to drop
+  public GameObject itemPrefab; // The item to drop
   public float dropDelay = 2f; // The delay before dropping the item
   public float dropRadius = 2f; // The range in which the item will drop
 
   private bool playerInRange = false; // Whether the player is currently in range
   private float inRangeTime = 0f; // The time the player has been in range
+
+  private bool itemDropped = false; // Whether the item has been dropped
 
   private void OnTriggerEnter2D(Collider2D other)
   {
@@ -26,6 +28,8 @@ public class Friends : MonoBehaviour
     {
       playerInRange = false;
       inRangeTime = 0f;
+      GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f);
+      itemDropped = false; // Reset itemDropped variable
     }
   }
 
@@ -45,18 +49,33 @@ public class Friends : MonoBehaviour
         GetComponent<SpriteRenderer>().color = new Color(0f, 1f, 0f);
         Debug.Log("Player has been in range for " + dropDelay + " seconds");
         // Drop the item
-        // DropItem();
+        DropItem();
 
         // Reset variables
         playerInRange = false;
         inRangeTime = 0f;
+        // Set itemDropped to true to prevent the item from being dropped again
+        itemDropped = true;
+
       }
     }
   }
 
-  // void DropItem()
-  // {
-  //   GameObject item = Instantiate(itemPrefab, transform.position + transform.up, Quaternion.identity);
-  //   item.GetComponent<Rigidbody>().AddForce(transform.forward * 5f, ForceMode.Impulse);
-  // }
+
+  private void DropItem()
+  {
+    // Instantiate the item prefab at the position of the entity and accelerate it in the player direction
+    GameObject item = Instantiate(itemPrefab, transform.position, Quaternion.identity);
+    Rigidbody2D itemRigidbody = item.GetComponent<Rigidbody2D>();
+
+    // Calculate the direction towards the player
+    Vector2 direction = (GameObject.FindGameObjectWithTag("Player").transform.position - transform.position).normalized;
+
+    // Add an impulse force to the rigidbody in the player direction
+    itemRigidbody.AddForce(direction * 2f, ForceMode2D.Impulse);
+
+    // Set the drag property of the rigidbody to gradually slow down the projectile
+    itemRigidbody.drag = 1f;
+  }
+
 }
