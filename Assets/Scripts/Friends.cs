@@ -5,14 +5,14 @@ using UnityEngine;
 public class Friends : MonoBehaviour
 {
 
-  public GameObject itemPrefab; // The item to drop
+  // public GameObject itemPrefab; // The item to drop
   public float dropDelay = 2f; // The delay before dropping the item
   public float dropRadius = 2f; // The range in which the item will drop
 
   private bool playerInRange = false; // Whether the player is currently in range
   private float inRangeTime = 0f; // The time the player has been in range
-                                  // Start is called before the first frame update
-  private void OnTriggerEnter(Collider other)
+
+  private void OnTriggerEnter2D(Collider2D other)
   {
     if (other.gameObject.CompareTag("Player"))
     {
@@ -20,7 +20,7 @@ public class Friends : MonoBehaviour
     }
   }
 
-  private void OnTriggerExit(Collider other)
+  private void OnTriggerExit2D(Collider2D other)
   {
     if (other.gameObject.CompareTag("Player"))
     {
@@ -29,21 +29,24 @@ public class Friends : MonoBehaviour
     }
   }
 
-  void Start()
-  {
-
-  }
-
-  // Update is called once per frame
-  void Update()
+  private void Update()
   {
     if (playerInRange)
     {
+      // change color of this object to orange
+      GetComponent<SpriteRenderer>().color = new Color(1f, 0.5f, 0f);
+
+      Debug.Log("Player is in range");
       inRangeTime += Time.deltaTime;
 
       if (inRangeTime >= dropDelay)
       {
-        DropItem();
+
+        GetComponent<SpriteRenderer>().color = new Color(0f, 1f, 0f);
+        Debug.Log("Player has been in range for " + dropDelay + " seconds");
+        // Drop the item
+        // DropItem();
+
         // Reset variables
         playerInRange = false;
         inRangeTime = 0f;
@@ -51,9 +54,9 @@ public class Friends : MonoBehaviour
     }
   }
 
-  void DropItem()
-  {
-    GameObject item = Instantiate(itemPrefab, transform.position + transform.up, Quaternion.identity);
-    item.GetComponent<Rigidbody>().AddForce(transform.forward * 5f, ForceMode.Impulse);
-  }
+  // void DropItem()
+  // {
+  //   GameObject item = Instantiate(itemPrefab, transform.position + transform.up, Quaternion.identity);
+  //   item.GetComponent<Rigidbody>().AddForce(transform.forward * 5f, ForceMode.Impulse);
+  // }
 }
