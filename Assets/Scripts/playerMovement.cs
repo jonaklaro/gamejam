@@ -15,4 +15,8 @@ public class playerMovement : MonoBehaviour
     {
         
     }
+    void playerInput(){
+
+        float x = Input.GetAxis("Horizontal") ;
+    }
 }
