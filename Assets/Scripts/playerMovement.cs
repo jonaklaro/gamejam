@@ -34,7 +34,7 @@ public class playerMovement : MonoBehaviour
         Vector3 direction = (mousePosition - transform.position).normalized;
 
         // Rotate the player to face the mouse position
-        transform.rotation = Quaternion.LookRotation(Vector3.forward, direction);
+        //transform.rotation = Quaternion.LookRotation(Vector3.forward, direction);
 
         // Move the player in the movement direction
         transform.position += new Vector3(movementVector.x, movementVector.y, 0f) * moveSpeed * Time.deltaTime;
