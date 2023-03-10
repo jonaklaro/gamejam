@@ -17,7 +17,8 @@ public class playerMovement : MonoBehaviour
         Move();
     }
 
-    void Move() {
+    void Move()
+    {
         float horizontalInput = Input.GetAxisRaw("Horizontal");
         float verticalInput = Input.GetAxisRaw("Vertical");
 
@@ -27,6 +28,16 @@ public class playerMovement : MonoBehaviour
         // Normalize the movement vector to prevent faster diagonal movement
         movementVector = movementVector.normalized;
 
+        // Get the mouse position in world space
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePosition.z = 0f;
+
+        // Calculate the direction vector from the player to the mouse
+        Vector3 direction = (mousePosition - transform.position).normalized;
+
+        // Rotate the player to face the mouse position
+        transform.rotation = Quaternion.LookRotation(Vector3.forward, direction);
+
         // Move the player in the movement direction
         transform.position += new Vector3(movementVector.x, movementVector.y, 0f) * moveSpeed * Time.deltaTime;
 
@@ -34,10 +45,7 @@ public class playerMovement : MonoBehaviour
         animator.SetFloat("Vertical", movementVector.y);
         animator.SetFloat("Speed", movementVector.sqrMagnitude);
 
-        
     }
-
-
 }
 
 
