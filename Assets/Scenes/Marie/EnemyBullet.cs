@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -8,6 +7,10 @@ public class EnemyBullet : MonoBehaviour
     private GameObject player;
     private Rigidbody2D rb;
     [SerializeField] private float force;
+    [SerializeField] private float existingTime = 5f;
+
+    private float timer;
+    
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -19,7 +22,25 @@ public class EnemyBullet : MonoBehaviour
 
         float rot = Mathf.Atan2(-direction.y, -direction.x) * Mathf.Rad2Deg;
         transform.rotation = quaternion.Euler(0,0, rot);
+        
     }
 
-   
+    private void Update()
+    {
+        timer += Time.deltaTime;
+
+        if (timer > existingTime)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.tag.Equals("Player"))
+        {
+            Debug.Log("The PLayer was hit");
+            Destroy(this.gameObject);
+        }
+    }
 }
