@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 370890261740299186}
   - component: {fileID: 370890261740299187}
   - component: {fileID: 370890261740299184}
+  - component: {fileID: 4694281306590166458}
   - component: {fileID: 370890261740299181}
   - component: {fileID: 370890261740299180}
   - component: {fileID: 370890261740299183}
@@ -34,7 +35,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &370890261740299187
 SpriteRenderer:
@@ -102,6 +103,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   animator: {fileID: 0}
+--- !u!114 &4694281306590166458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 370890261740299185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52aa5bf8bd68c6646991356c1f29fd43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 2360038324825771038, guid: 80d67463eefcb1b44a39e2b1a03db5fd, type: 3}
+  shootInterval: 1
+  projectileLifetime: 3
 --- !u!50 &370890261740299181
 Rigidbody2D:
   serializedVersion: 4
