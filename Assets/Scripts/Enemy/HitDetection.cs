@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class HitDetection : MonoBehaviour
@@ -16,6 +14,7 @@ public class HitDetection : MonoBehaviour
             EnemyHealthCheck enemyHealth = collision.gameObject.GetComponent<EnemyHealthCheck>();
             if (enemyHealth != null)
             {
+                //greift auf anderes script 
                 enemyHealth.ReduceEnemyLife();
             }
         }
