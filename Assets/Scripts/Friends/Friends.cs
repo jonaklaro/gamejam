@@ -14,7 +14,7 @@ public class Friends : MonoBehaviour
   private bool playerInRange = false; // Whether the player is currently in range
   private float inRangeTime = 0f; // The time the player has been in range
 
-  private bool itemDropped = false; // Whether the item has been dropped
+  public bool itemDropped = false; // Whether the item has been dropped
 
   SoundManager soundManager;
   AudioSource audioSource;
@@ -36,17 +36,17 @@ public class Friends : MonoBehaviour
       inRangeTime = 0f;
 
 
-      if (itemDropped)
-      {
-        //GetComponent<SpriteRenderer>().color = new Color(.5f, .5f, .5f);
-        // itemDropped = false; // Reset itemDropped variable
-        //set itemDropped to false after a certain amount of time
-        StartCoroutine(ResetItemDrop());
-      }
-      else
-      {
-        //GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f);
-      }
+      // if (itemDropped)
+      // {
+      //   //GetComponent<SpriteRenderer>().color = new Color(.5f, .5f, .5f);
+      //   // itemDropped = false; // Reset itemDropped variable
+      //   //set itemDropped to false after a certain amount of time
+      //   StartCoroutine(ResetItemDrop());
+      // }
+      // else
+      // {
+      //   //GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f);
+      // }
 
     }
   }
