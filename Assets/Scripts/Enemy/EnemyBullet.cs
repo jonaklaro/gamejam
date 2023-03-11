@@ -49,8 +49,7 @@ public class EnemyBullet : MonoBehaviour
         ParticleSystem particle = particObject.GetComponent<ParticleSystem>();
         Destroy(particObject, particle.main.duration);
         Destroy(gameObject);
-        Debug.Log("i hit an object");
-        
+
         if (col.gameObject.tag.Equals("Player"))
         {
             playerHealthTimer.TakeDamage(timeLost);

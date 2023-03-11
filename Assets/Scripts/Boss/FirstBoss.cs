@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -7,24 +8,33 @@ public class FirstBoss : MonoBehaviour
     [SerializeField] private Bossstats bossStats;
     [FormerlySerializedAs("targetTransform")] 
     [SerializeField] Transform playerTransform;
+
+    private bool youMayStart = false;
     private bool isShooting;
     [SerializeField] private Transform shootingPos;
-    
-   
+
+    private void Awake()
+    {
+        StartCoroutine(WaitUntilYouCanStart());
+    }
+
     // Update is called once per frame
     void Update()
     {
+        if (youMayStart)
+        {
+            Vector2 direction = playerTransform.position - transform.position;
+
+            // Calculate the angle to rotate the enemy
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+            // Apply the rotation to the enemy's transform
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            Vector2 playerDirection = playerTransform.position - transform.position;
+            playerDirection = playerDirection.normalized;
+            StartCoroutine(TimeBetweenShoots(playerDirection));
+        }
         
-        Vector2 direction = playerTransform.position - transform.position;
-
-        // Calculate the angle to rotate the enemy
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-
-        // Apply the rotation to the enemy's transform
-        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        Vector2 playerDirection = playerTransform.position - transform.position;
-        playerDirection = playerDirection.normalized;
-        StartCoroutine(TimeBetweenShoots(playerDirection));
     }
     
     private IEnumerator TimeBetweenShoots(Vector2 playerDir)
@@ -36,6 +46,12 @@ public class FirstBoss : MonoBehaviour
         yield return new WaitForSeconds(bossStats.shootTime);
         isShooting = false;
 
+    }
+
+    private IEnumerator WaitUntilYouCanStart()
+    {
+        yield return new WaitForSeconds(5);
+        youMayStart = true;
     }
     private void StartShooting(Vector2 playerDir)
     {

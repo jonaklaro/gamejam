@@ -37,7 +37,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &370890261740299187
 SpriteRenderer:
@@ -105,6 +105,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5.5
   animator: {fileID: 5499845512638176285}
+  particOne: {fileID: 920449678198985598, guid: 53723841b0eccac40b092c4302b9eb8c, type: 3}
+  particTwo: {fileID: 7557211617408577700, guid: fbcff320430e5d843a2abfbc726680d2, type: 3}
+  particThree: {fileID: 7063044846023485686, guid: c6d65ba4ee4e3c749a7c5a3cc8cdb690, type: 3}
+  particFour: {fileID: 2206204674963792704, guid: 1a396fafdd486a74a94011cae5a57e82, type: 3}
 --- !u!114 &4694281306590166458
 MonoBehaviour:
   m_ObjectHideFlags: 0
