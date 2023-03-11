@@ -10,6 +10,7 @@ TagManager:
   - Projectile
   - ProjectileEnemy
   - Explosion
+  - Wall
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - UI
   - Entities
   - Resources
-  - 
+  - Obstacle
   - 
   - 
   - 
