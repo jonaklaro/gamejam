@@ -9,12 +9,16 @@ public class Friends : MonoBehaviour
   public float dropDelay = 2f; // The delay before dropping the item
   public float dropRadius = 2f; // The range in which the item will drop
 
-    [SerializeField] Animator animator;
+  [SerializeField] Animator animator;
 
   private bool playerInRange = false; // Whether the player is currently in range
   private float inRangeTime = 0f; // The time the player has been in range
 
   private bool itemDropped = false; // Whether the item has been dropped
+
+  SoundManager soundManager;
+  AudioSource audioSource;
+
 
   private void OnTriggerEnter2D(Collider2D other)
   {
@@ -38,7 +42,8 @@ public class Friends : MonoBehaviour
         // itemDropped = false; // Reset itemDropped variable
         //set itemDropped to false after a certain amount of time
         StartCoroutine(ResetItemDrop());
-      } else
+      }
+      else
       {
         //GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f);
       }
@@ -48,11 +53,17 @@ public class Friends : MonoBehaviour
 
   IEnumerator ResetItemDrop()
   {
-    yield return new WaitForSeconds(10f);
+    yield return new WaitForSeconds(20f);
     itemDropped = false;
     animator.SetBool("isEmpty", false);
     //GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f);
 
+  }
+
+  private void Start()
+  {
+    soundManager = SoundManager.instance;
+    audioSource = GetComponent<AudioSource>();
   }
 
   private void Update()
@@ -86,20 +97,24 @@ public class Friends : MonoBehaviour
 
   private void DropItem()
   {
-        animator.SetBool("isEmpty", true);
-        
-        // Instantiate the item prefab at the position of the entity and accelerate it in the player direction
-        GameObject item = Instantiate(itemPrefab, transform.position, Quaternion.identity);
-        Rigidbody2D itemRigidbody = item.GetComponent<Rigidbody2D>();
+    animator.SetBool("isEmpty", true);
 
-        // Calculate the direction towards the player
-        Vector2 direction = (GameObject.FindGameObjectWithTag("Player").transform.position - transform.position).normalized;
+    // Instantiate the item prefab at the position of the entity and accelerate it in the player direction
+    GameObject item = Instantiate(itemPrefab, transform.position, Quaternion.identity);
+    Rigidbody2D itemRigidbody = item.GetComponent<Rigidbody2D>();
 
-        // Add an impulse force to the rigidbody in the player direction
-        itemRigidbody.AddForce(direction * 2f, ForceMode2D.Impulse);
+    // Calculate the direction towards the player
+    Vector2 direction = (GameObject.FindGameObjectWithTag("Player").transform.position - transform.position).normalized;
 
-        // Set the drag property of the rigidbody to gradually slow down the projectile
-        itemRigidbody.drag = 1f;
+    // Add an impulse force to the rigidbody in the player direction
+    itemRigidbody.AddForce(direction * 2f, ForceMode2D.Impulse);
+
+    // Set the drag property of the rigidbody to gradually slow down the projectile
+    itemRigidbody.drag = 1f;
+
+    AudioClip clip = soundManager.GetAudioClip("fill");
+    audioSource.clip = clip;
+    audioSource.Play();
   }
 
 }
