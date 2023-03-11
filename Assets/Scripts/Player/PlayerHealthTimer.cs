@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerHealthTimer : MonoBehaviour
 {
@@ -13,6 +14,20 @@ public class PlayerHealthTimer : MonoBehaviour
     [SerializeField] Image healthBarSpriteLeft = null;
     [SerializeField] Image healthBarSpriteRight = null;
 
+    int highscore = 0;
+
+    [SerializeField] TextMeshProUGUI highscoreText;
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+
+        if (other.gameObject.CompareTag("Resource"))
+        {
+            Destroy(other.gameObject);
+            GatherRessource(15f);
+        }
+    }
+
     private void Start()
     {
         healthTimer = Mathf.Min(healthTimer, healthTimerMax);
@@ -20,6 +35,9 @@ public class PlayerHealthTimer : MonoBehaviour
 
     void Update()
     {
+        highscore = (int)(Time.time * 10);
+        highscoreText.text = highscore.ToString();
+
         healthTimer -= Time.deltaTime;
         healthBarSpriteLeft.fillAmount = healthTimer / healthTimerMax;
         healthBarSpriteRight.fillAmount = healthBarSpriteLeft.fillAmount;
@@ -35,7 +53,7 @@ public class PlayerHealthTimer : MonoBehaviour
             Die();
     }
 
-    public void GatherRessource(float timeGained)
+    void GatherRessource(float timeGained)
     {
         healthTimer += timeGained;
         healthTimer = Mathf.Min(healthTimer, healthTimerMax);
@@ -47,5 +65,10 @@ public class PlayerHealthTimer : MonoBehaviour
         playerMovement.Die();
         GetComponent<PlayerShoot>().enabled = false;
         enabled = false;
+    }
+
+    public void KilledEnemy()
+    {
+        highscore += 50;
     }
 }
