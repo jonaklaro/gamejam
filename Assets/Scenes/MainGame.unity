@@ -295,6 +295,22 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 370890261740299184, guid: 32047d66a0692934a8855851e9e8f5de, type: 3}
+      propertyPath: particOne
+      value: 
+      objectReference: {fileID: 920449678198985598, guid: 53723841b0eccac40b092c4302b9eb8c, type: 3}
+    - target: {fileID: 370890261740299184, guid: 32047d66a0692934a8855851e9e8f5de, type: 3}
+      propertyPath: particTwo
+      value: 
+      objectReference: {fileID: 7557211617408577700, guid: fbcff320430e5d843a2abfbc726680d2, type: 3}
+    - target: {fileID: 370890261740299184, guid: 32047d66a0692934a8855851e9e8f5de, type: 3}
+      propertyPath: particFour
+      value: 
+      objectReference: {fileID: 2206204674963792704, guid: 1a396fafdd486a74a94011cae5a57e82, type: 3}
+    - target: {fileID: 370890261740299184, guid: 32047d66a0692934a8855851e9e8f5de, type: 3}
+      propertyPath: particThree
+      value: 
+      objectReference: {fileID: 7063044846023485686, guid: c6d65ba4ee4e3c749a7c5a3cc8cdb690, type: 3}
     - target: {fileID: 370890261740299185, guid: 32047d66a0692934a8855851e9e8f5de, type: 3}
       propertyPath: m_Name
       value: Player

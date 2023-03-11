@@ -88,7 +88,7 @@ public class playerMovement : MonoBehaviour
         {
             ParticleSystem part = Instantiate(particles[i], transform.position, Quaternion.identity);
         }
-        Destroy(this.gameObject);
+       // Destroy(this.gameObject);
     }
 }
 
