@@ -63,7 +63,7 @@ public class SoundManager : MonoBehaviour
     audioMixer.SetFloat(paramName, volume);
   }
 
-  private AudioClip GetAudioClip(string clipName)
+  public AudioClip GetAudioClip(string clipName)
   {
     foreach (AudioClip clip in audioClips)
     {
