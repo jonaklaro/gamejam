@@ -20,16 +20,20 @@ public class HitDetection : MonoBehaviour
             }
         }
 
-       
-        ParticleSystem particleObject = Instantiate(particleHit, transform.position, Quaternion.identity);
 
-        
-        //ParticleSystem particleSystem = particleObject.GetComponent<ParticleSystem>();
-        //Destroy(particleObject, particleSystem.main.duration);
 
-        //Destroy(particleObject.gameObject, particleObject.main.duration);
+        if (!(collision.gameObject.CompareTag("Player")))
+        {
+            ParticleSystem particleObject = Instantiate(particleHit, transform.position, Quaternion.identity);
 
-        
-        Destroy(gameObject);
+
+            ParticleSystem particleSystem = particleObject.GetComponent<ParticleSystem>();
+            Destroy(particleObject, particleSystem.main.duration);
+
+            Destroy(particleObject.gameObject, particleObject.main.duration);
+
+
+            Destroy(gameObject);
+        }
     }
 }
