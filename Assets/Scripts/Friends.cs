@@ -36,17 +36,17 @@ public class Friends : MonoBehaviour
       inRangeTime = 0f;
 
 
-      if (itemDropped)
-      {
-        //GetComponent<SpriteRenderer>().color = new Color(.5f, .5f, .5f);
-        // itemDropped = false; // Reset itemDropped variable
-        //set itemDropped to false after a certain amount of time
-        StartCoroutine(ResetItemDrop());
-      }
-      else
-      {
-        //GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f);
-      }
+      // if (itemDropped)
+      // {
+      //   //GetComponent<SpriteRenderer>().color = new Color(.5f, .5f, .5f);
+      //   // itemDropped = false; // Reset itemDropped variable
+      //   //set itemDropped to false after a certain amount of time
+      //   StartCoroutine(ResetItemDrop());
+      // }
+      // else
+      // {
+      //   //GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f);
+      // }
 
     }
   }
