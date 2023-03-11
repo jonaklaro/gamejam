@@ -12,6 +12,7 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private float standingRange;
     [SerializeField] private float stopFollowing;
     private Rigidbody2D rb;
+    private Vector2 movement;
 
     [SerializeField] private int shootTime;
     [SerializeField] private int waitTime;
@@ -20,7 +21,6 @@ public class EnemyMovement : MonoBehaviour
     private int index;
 
     [SerializeField] private bool isShooting;
-    [SerializeField] private bool inRange = true;
     private float distance;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform shootPos;
@@ -42,29 +42,26 @@ public class EnemyMovement : MonoBehaviour
     {
         distance = Vector2.Distance(transform.position, playerPos.transform.position);
         Vector2 direction = playerPos.transform.position - transform.position;
-        
-        direction.Normalize();
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        rb.rotation = angle;
+        direction.Normalize();
+        movement = direction;
+    }
 
-      
+    private void FixedUpdate()
+    {
         if (distance < range)
         {
             index = behaviour[0];
-            /*GetAgressive(angle);
-            range = stopFollowing;*/
-
         }
         
         if (distance > range)
         {
-           index = behaviour[1];
+            index = behaviour[1];
         }
         if (distance < standingRange)
         {
             index = behaviour[2];
-        }else
-        {
-            //index = behaviour[3];
         }
         
 
@@ -72,7 +69,7 @@ public class EnemyMovement : MonoBehaviour
         switch (behaviour[index])
         {
             case 0:
-                GetAgressive(angle);
+                GetAgressive(movement);
                 range = stopFollowing;
                 break;
             case 1:
@@ -81,21 +78,15 @@ public class EnemyMovement : MonoBehaviour
             case 2:
                 JustShootGodDammit();
                 break;
-            case 3:
-                StartCoroutine(WalkBackToPlace(angle));
-                break;
-
-        }
-
-
+           }
     }
 
-    private void GetAgressive(float angle)
+    private void GetAgressive(Vector2 direction)
     {
          /*transform.position =
                 Vector2.MoveTowards(this.transform.position, playerPos.transform.position, speed * Time.deltaTime);
             transform.rotation = Quaternion.Euler(Vector3.forward * angle);*/
-            rb.velocity = new Vector2(playerPos.transform.position.x, playerPos.transform.position.y);
+        rb.MovePosition((Vector2)transform.position + (direction * speed * Time.fixedDeltaTime));
         if(isShooting) return;
         StartCoroutine(TimeBetweenShoots());
     }
@@ -105,30 +96,14 @@ public class EnemyMovement : MonoBehaviour
         StartCoroutine(TimeBetweenShoots());
     }
 
-    private IEnumerator WalkBackToPlace(float angle)
+    /*private IEnumerator WalkBackToPlace(float angle)
     {
         yield return new WaitForSeconds(waitTime);
         transform.position = Vector2.MoveTowards(this.transform.position, guardingPos.transform.position,
             speed * Time.deltaTime);
         transform.rotation = Quaternion.Euler(Vector3.forward * angle);
         
-    }
-
-    private void OnTriggerEnter2D(Collider2D col)
-    {
-        if (col.gameObject.CompareTag("Player"))
-        {
-            inRange = true;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            inRange = false;
-        }
-    }
+    }*/
 
     private IEnumerator TimeBetweenShoots()
     {
