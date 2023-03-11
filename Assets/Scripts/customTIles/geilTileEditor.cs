@@ -23,6 +23,7 @@ public class geilTileEditor : Editor
 
         if (GUILayout.Button("load Tiles"))
         {
+            Debug.Log(path);
             script.loadTiles(path);
         }
     }

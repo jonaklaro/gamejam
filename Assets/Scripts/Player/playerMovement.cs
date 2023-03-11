@@ -12,12 +12,16 @@ public class playerMovement : MonoBehaviour
     SoundManager soundManager;
 
 
+
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
         soundManager = SoundManager.instance;
-        soundManager.SetVolume("MasterVolume", -40f);
+        rb = GetComponent<Rigidbody2D>();
+        soundManager.SetVolume("MasterVolume", -20f);
         soundManager.PlayMusic("8Bit2");
+
+        //Rotation Lock
+        rb.freezeRotation = true;
     }
 
     private void Update()
@@ -50,8 +54,7 @@ public class playerMovement : MonoBehaviour
         // Move the player in the movement direction using Rigidbody2D velocity
         rb.velocity = movementVector * moveSpeed;
 
-        //Rotation Lock
-        rb.freezeRotation = true;
+        
 
         animator.SetFloat("Horizontal", movementVector.x);
         animator.SetFloat("Vertical", movementVector.y);
@@ -63,6 +66,13 @@ public class playerMovement : MonoBehaviour
     {
         rb.velocity = Vector3.zero;
         enabled = false;
+
+        AudioClip deathSound = soundManager.GetAudioClip("Explosion_Tiny_4");
+        //get AudioSource component and play death sound
+        AudioSource audioSource = GetComponent<AudioSource>();
+        audioSource.clip = deathSound;
+        Debug.Log("Death Sound: " + deathSound);
+        audioSource.Play();
     }
 }
 

@@ -23,7 +23,7 @@ public class NewEnemyMovement : MonoBehaviour
   {
     if (other.gameObject.CompareTag("Player"))
     {
-      Debug.Log("Player is in range");
+      //Debug.Log("Player is in range");
       playerInRange = true;
     }
   }
@@ -34,7 +34,9 @@ public class NewEnemyMovement : MonoBehaviour
     playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
     rb = GetComponent<Rigidbody2D>();
     obstacleLayer = LayerMask.GetMask("Wall");
-  }
+
+        rb.freezeRotation = true;
+    }
 
   void Update()
   {
@@ -75,6 +77,8 @@ public class NewEnemyMovement : MonoBehaviour
       Vector2 avoidanceDirection = Vector2.Perpendicular(hit.normal).normalized;
       movementDirection = avoidanceDirection;
     }
+
+
 
     // Move the enemy
     rb.velocity = movementDirection * moveSpeed;
