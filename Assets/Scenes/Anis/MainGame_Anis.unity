@@ -343,6 +343,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1232730152665814103, guid: 32047d66a0692934a8855851e9e8f5de, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1232730152665814103, guid: 32047d66a0692934a8855851e9e8f5de, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1232730152665814103, guid: 32047d66a0692934a8855851e9e8f5de, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1232730152665814103, guid: 32047d66a0692934a8855851e9e8f5de, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1947488982624046955, guid: 32047d66a0692934a8855851e9e8f5de, type: 3}
+      propertyPath: m_Name
+      value: PlayerShoot
+      objectReference: {fileID: 0}
+    - target: {fileID: 2673124219593315892, guid: 32047d66a0692934a8855851e9e8f5de, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3941343736418143467, guid: 32047d66a0692934a8855851e9e8f5de, type: 3}
       propertyPath: highsoreText
       value: 
@@ -678,65 +702,6 @@ Transform:
   m_Father: {fileID: 1834303985}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &710844337
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 2
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 971938349552868487, guid: f2ec3db7aa0f51647a9f1bfde0c55cea, type: 3}
-      propertyPath: m_RootOrder
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 971938349552868487, guid: f2ec3db7aa0f51647a9f1bfde0c55cea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 5.95
-      objectReference: {fileID: 0}
-    - target: {fileID: 971938349552868487, guid: f2ec3db7aa0f51647a9f1bfde0c55cea, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.49
-      objectReference: {fileID: 0}
-    - target: {fileID: 971938349552868487, guid: f2ec3db7aa0f51647a9f1bfde0c55cea, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 971938349552868487, guid: f2ec3db7aa0f51647a9f1bfde0c55cea, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 971938349552868487, guid: f2ec3db7aa0f51647a9f1bfde0c55cea, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 971938349552868487, guid: f2ec3db7aa0f51647a9f1bfde0c55cea, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 971938349552868487, guid: f2ec3db7aa0f51647a9f1bfde0c55cea, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 971938349552868487, guid: f2ec3db7aa0f51647a9f1bfde0c55cea, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 971938349552868487, guid: f2ec3db7aa0f51647a9f1bfde0c55cea, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 971938349552868487, guid: f2ec3db7aa0f51647a9f1bfde0c55cea, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 971938349552868488, guid: f2ec3db7aa0f51647a9f1bfde0c55cea, type: 3}
-      propertyPath: m_Name
-      value: Enemy
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_AddedGameObjects: []
-  m_SourcePrefab: {fileID: 100100000, guid: f2ec3db7aa0f51647a9f1bfde0c55cea, type: 3}
 --- !u!1001 &1054851833
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5106,7 +5071,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: cc9eece6ea8975942ab0445711403186, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

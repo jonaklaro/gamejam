@@ -10,6 +10,7 @@ public class playerMovement : MonoBehaviour
     [SerializeField] Animator animator;
     Rigidbody2D rb;
     SoundManager soundManager;
+    PlayerShoot playerShoot;
 
 
 
@@ -17,11 +18,12 @@ public class playerMovement : MonoBehaviour
     {
         soundManager = SoundManager.instance;
         rb = GetComponent<Rigidbody2D>();
+        playerShoot = GetComponent<PlayerShoot>();
         soundManager.SetVolume("MasterVolume", -20f);
         //make a list with "8Bit1" and "8Bit2" and then randomly pick one of them
         string randomMusic = "8Bit" + Random.Range(1, 2);
         soundManager.PlayMusic(randomMusic);
-
+        
         
     }
 
@@ -63,6 +65,7 @@ public class playerMovement : MonoBehaviour
         animator.SetFloat("Horizontal", movementVector.x);
         animator.SetFloat("Vertical", movementVector.y);
         animator.SetFloat("Speed", movementVector.sqrMagnitude);
+        animator.SetBool("IsShooting", playerShoot.isShooting);
 
     }
 

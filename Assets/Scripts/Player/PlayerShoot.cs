@@ -11,6 +11,7 @@ public class PlayerShoot : MonoBehaviour
 
   private bool firstShotFired = false;
   private bool secondShotFired = false;
+  public bool isShooting = false;
   SoundManager soundManager;
   AudioSource audioSource;
 
@@ -25,7 +26,7 @@ public class PlayerShoot : MonoBehaviour
 
   void Update()
   {
-
+    isShooting= false;
     //first click is 1/3 of the shoot interval
     float firstClick = shootInterval / 3;
     //second click is 2/3 of the shoot interval
@@ -51,6 +52,7 @@ public class PlayerShoot : MonoBehaviour
     }
     if (Time.time - lastShootTime >= shootInterval)
     {
+      isShooting = true;
       clip = soundManager.GetAudioClip("laser_gun");
       audioSource.clip = clip;
       audioSource.time = 0.15f;
@@ -61,6 +63,7 @@ public class PlayerShoot : MonoBehaviour
       lastShootTime = Time.time;
       firstShotFired = false;
       secondShotFired = false;
+            
     }
   }
 
