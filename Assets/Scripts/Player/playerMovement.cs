@@ -55,6 +55,11 @@ public class playerMovement : MonoBehaviour
     animator.SetFloat("Vertical", movementVector.y);
     animator.SetFloat("Speed", movementVector.sqrMagnitude);
 
-  }
+        //Rotation Lock
+        rb.freezeRotation = true;
+        // sonst so
+        // rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+
+    }
 }
 
