@@ -7,9 +7,13 @@ using UnityEngine;
 public class playerMovement : MonoBehaviour
 {
     public float moveSpeed = 5f;
-
     [SerializeField] Animator animator;
-    
+    Rigidbody2D rb;
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
 
     private void Update()
     {
@@ -38,8 +42,8 @@ public class playerMovement : MonoBehaviour
         // Rotate the player to face the mouse position
         //transform.rotation = Quaternion.LookRotation(Vector3.forward, direction);
 
-        // Move the player in the movement direction
-        transform.position += new Vector3(movementVector.x, movementVector.y, 0f) * moveSpeed * Time.deltaTime;
+        // Move the player in the movement direction using Rigidbody2D velocity
+        rb.velocity = movementVector * moveSpeed;
 
         animator.SetFloat("Horizontal", movementVector.x);
         animator.SetFloat("Vertical", movementVector.y);
@@ -47,5 +51,4 @@ public class playerMovement : MonoBehaviour
 
     }
 }
-
 
