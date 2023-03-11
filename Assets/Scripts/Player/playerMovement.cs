@@ -18,7 +18,9 @@ public class playerMovement : MonoBehaviour
         soundManager = SoundManager.instance;
         rb = GetComponent<Rigidbody2D>();
         soundManager.SetVolume("MasterVolume", -20f);
-        soundManager.PlayMusic("8Bit2");
+        //make a list with "8Bit1" and "8Bit2" and then randomly pick one of them
+        string randomMusic = "8Bit" + Random.Range(1, 2);
+        soundManager.PlayMusic(randomMusic);
 
         
     }
