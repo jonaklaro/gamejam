@@ -23,9 +23,8 @@ public class PlayerHealthTimer : MonoBehaviour
 
         if (other.gameObject.CompareTag("Resource"))
         {
-            Debug.Log("Resource collected");
             Destroy(other.gameObject);
-            GatherRessource(10f);
+            GatherRessource(15f);
         }
     }
 
