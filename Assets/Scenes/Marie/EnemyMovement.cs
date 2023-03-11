@@ -57,15 +57,12 @@ public class EnemyMovement : MonoBehaviour
         {
            index = behaviour[1];
         }
-
         if (distance < standingRange)
         {
             index = behaviour[2];
-        }
-
-        if (!inRange)
+        }else
         {
-            index = behaviour[3];
+            //index = behaviour[3];
         }
         
 
@@ -83,7 +80,7 @@ public class EnemyMovement : MonoBehaviour
                 JustShootGodDammit();
                 break;
             case 3:
-                StartCoroutine(WalkBackToPlace());
+                StartCoroutine(WalkBackToPlace(angle));
                 break;
 
         }
@@ -105,11 +102,12 @@ public class EnemyMovement : MonoBehaviour
         StartCoroutine(TimeBetweenShoots());
     }
 
-    private IEnumerator WalkBackToPlace()
+    private IEnumerator WalkBackToPlace(float angle)
     {
         yield return new WaitForSeconds(waitTime);
         transform.position = Vector2.MoveTowards(this.transform.position, guardingPos.transform.position,
             speed * Time.deltaTime);
+        transform.rotation = Quaternion.Euler(Vector3.forward * angle);
         
     }
 
