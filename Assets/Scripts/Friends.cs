@@ -14,7 +14,7 @@ public class Friends : MonoBehaviour
   private bool playerInRange = false; // Whether the player is currently in range
   private float inRangeTime = 0f; // The time the player has been in range
 
-  private bool itemDropped = false; // Whether the item has been dropped
+  public bool itemDropped = false; // Whether the item has been dropped
 
   SoundManager soundManager;
   AudioSource audioSource;
