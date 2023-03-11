@@ -22,8 +22,7 @@ public class playerMovement : MonoBehaviour
         string randomMusic = "8Bit" + Random.Range(1, 2);
         soundManager.PlayMusic(randomMusic);
 
-        //Rotation Lock
-        rb.freezeRotation = true;
+        
     }
 
     private void Update()
@@ -34,6 +33,9 @@ public class playerMovement : MonoBehaviour
 
     void Move()
     {
+        //Rotation Lock
+        rb.freezeRotation = true;
+
         float horizontalInput = Input.GetAxisRaw("Horizontal");
         float verticalInput = Input.GetAxisRaw("Vertical");
 
