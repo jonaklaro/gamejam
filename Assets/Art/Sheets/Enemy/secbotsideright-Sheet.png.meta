@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0b1f26c60bcac8348a05acf5cae351f7
+guid: 8c191fed79669a2469529985e4ca6e73
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -107,7 +107,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: sideleft-Sheet_explosionleft_0
+      name: secbotsideright-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -121,14 +121,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7fad40b2e9bb5b2489d663204b398d22
-      internalID: 966097857
+      spriteID: 1857e43effb5b524599ae8bbe4de4ff2
+      internalID: -1819886435
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sideleft-Sheet_explosionleft_1
+      name: secbotsideright-Sheet_1
       rect:
         serializedVersion: 2
         x: 64
@@ -142,14 +142,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3ff2663e28df985498b1f0c9a8804c88
-      internalID: 1563190002
+      spriteID: cc0ecf53846d9744385f072181abe6e3
+      internalID: 2021420867
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sideleft-Sheet_explosionleft_2
+      name: secbotsideright-Sheet_2
       rect:
         serializedVersion: 2
         x: 128
@@ -163,14 +163,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b8d620c6b23f346499d8264b4502c3dc
-      internalID: -697174595
+      spriteID: 5edac98109ffc07489794a7007f5cf6e
+      internalID: 9270865
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sideleft-Sheet_explosionleft_3
+      name: secbotsideright-Sheet_3
       rect:
         serializedVersion: 2
         x: 192
@@ -184,8 +184,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d87253e4d55bc724996cb36acd4050cd
-      internalID: -83824507
+      spriteID: 5415658e3bc28e546a51c39d343b7ff5
+      internalID: -1776365313
       vertices: []
       indices: 
       edges: []
@@ -201,10 +201,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      sideleft-Sheet_explosionleft_1: 1563190002
-      sideleft-Sheet_explosionleft_0: 966097857
-      sideleft-Sheet_explosionleft_2: -697174595
-      sideleft-Sheet_explosionleft_3: -83824507
+      secbotsideright-Sheet_3: -1776365313
+      secbotsideright-Sheet_2: 9270865
+      secbotsideright-Sheet_1: 2021420867
+      secbotsideright-Sheet_0: -1819886435
   spritePackingTag: 
   pSDRemoveMatte: 0
   userData: 

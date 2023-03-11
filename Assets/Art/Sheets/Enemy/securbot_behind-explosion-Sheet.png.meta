@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0b1f26c60bcac8348a05acf5cae351f7
+guid: 341dbe909966cca48b4832ee37767bda
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -107,7 +107,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: sideleft-Sheet_explosionleft_0
+      name: securbot_behind-explosion-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -121,14 +121,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7fad40b2e9bb5b2489d663204b398d22
-      internalID: 966097857
+      spriteID: d8c6ef9429878404590df0dc418dae28
+      internalID: -104656906
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sideleft-Sheet_explosionleft_1
+      name: securbot_behind-explosion-Sheet_1
       rect:
         serializedVersion: 2
         x: 64
@@ -142,14 +142,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3ff2663e28df985498b1f0c9a8804c88
-      internalID: 1563190002
+      spriteID: f4183cad518656d43b5f048f5b4db14c
+      internalID: -1171292292
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sideleft-Sheet_explosionleft_2
+      name: securbot_behind-explosion-Sheet_2
       rect:
         serializedVersion: 2
         x: 128
@@ -163,14 +163,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b8d620c6b23f346499d8264b4502c3dc
-      internalID: -697174595
+      spriteID: 3226c520777cc934ca4941961e0c914c
+      internalID: 2108318413
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sideleft-Sheet_explosionleft_3
+      name: securbot_behind-explosion-Sheet_3
       rect:
         serializedVersion: 2
         x: 192
@@ -184,8 +184,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d87253e4d55bc724996cb36acd4050cd
-      internalID: -83824507
+      spriteID: 54ca8e3ca4a8774498f7be58009d8465
+      internalID: -1309289458
       vertices: []
       indices: 
       edges: []
@@ -201,10 +201,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      sideleft-Sheet_explosionleft_1: 1563190002
-      sideleft-Sheet_explosionleft_0: 966097857
-      sideleft-Sheet_explosionleft_2: -697174595
-      sideleft-Sheet_explosionleft_3: -83824507
+      securbot_behind-explosion-Sheet_1: -1171292292
+      securbot_behind-explosion-Sheet_3: -1309289458
+      securbot_behind-explosion-Sheet_2: 2108318413
+      securbot_behind-explosion-Sheet_0: -104656906
   spritePackingTag: 
   pSDRemoveMatte: 0
   userData: 

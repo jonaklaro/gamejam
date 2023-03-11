@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class NewEnemyMovement : MonoBehaviour
 {
+    PlayerShoot playerShoot;
+    [SerializeField] Animator animator;
     public float stopFollowRadius = 15f; // The radius in which the enemy will stop following the player
     public float moveSpeed = 3f; // The speed at which the enemy moves
     public float decelerationFactor = 0.5f; // The factor at which the enemy decelerates when the player is out of range
@@ -42,6 +44,7 @@ public class NewEnemyMovement : MonoBehaviour
 
     private void Awake()
     {
+        playerShoot = GetComponent<PlayerShoot>();
         startingPosition = transform.position;
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         rb = GetComponent<Rigidbody2D>();
@@ -70,6 +73,11 @@ public class NewEnemyMovement : MonoBehaviour
         {
             StartCoroutine(TimeBetweenShoots());
         }
+
+        animator.SetFloat("Horizontal", movementDirection.x);
+        animator.SetFloat("Vertical", movementDirection.y);
+        animator.SetFloat("Speed", movementDirection.sqrMagnitude);
+        animator.SetBool("IsShooting", playerShoot.isShooting);
     }
 
     void FindNewTile()
