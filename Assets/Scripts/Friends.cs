@@ -9,6 +9,8 @@ public class Friends : MonoBehaviour
   public float dropDelay = 2f; // The delay before dropping the item
   public float dropRadius = 2f; // The range in which the item will drop
 
+    [SerializeField] Animator animator;
+
   private bool playerInRange = false; // Whether the player is currently in range
   private float inRangeTime = 0f; // The time the player has been in range
 
@@ -32,13 +34,13 @@ public class Friends : MonoBehaviour
 
       if (itemDropped)
       {
-        GetComponent<SpriteRenderer>().color = new Color(.5f, .5f, .5f);
+        //GetComponent<SpriteRenderer>().color = new Color(.5f, .5f, .5f);
         // itemDropped = false; // Reset itemDropped variable
         //set itemDropped to false after a certain amount of time
         StartCoroutine(ResetItemDrop());
       } else
       {
-        GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f);
+        //GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f);
       }
 
     }
@@ -48,7 +50,8 @@ public class Friends : MonoBehaviour
   {
     yield return new WaitForSeconds(10f);
     itemDropped = false;
-    GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f);
+    animator.SetBool("isEmpty", false);
+    //GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f);
 
   }
 
@@ -57,16 +60,16 @@ public class Friends : MonoBehaviour
     if (playerInRange && !itemDropped)
     {
       // change color of this object to orange
-      GetComponent<SpriteRenderer>().color = new Color(1f, 0.5f, 0f);
+      //GetComponent<SpriteRenderer>().color = new Color(1f, 0.5f, 0f);
 
-      Debug.Log("Player is in range");
+      //Debug.Log("Player is in range");
       inRangeTime += Time.deltaTime;
 
       if (inRangeTime >= dropDelay)
       {
 
-        GetComponent<SpriteRenderer>().color = new Color(0f, 1f, 0f);
-        Debug.Log("Player has been in range for " + dropDelay + " seconds");
+        //GetComponent<SpriteRenderer>().color = new Color(0f, 1f, 0f);
+        //Debug.Log("Player has been in range for " + dropDelay + " seconds");
         // Drop the item
         DropItem();
 
@@ -83,18 +86,20 @@ public class Friends : MonoBehaviour
 
   private void DropItem()
   {
-    // Instantiate the item prefab at the position of the entity and accelerate it in the player direction
-    GameObject item = Instantiate(itemPrefab, transform.position, Quaternion.identity);
-    Rigidbody2D itemRigidbody = item.GetComponent<Rigidbody2D>();
+        animator.SetBool("isEmpty", true);
+        
+        // Instantiate the item prefab at the position of the entity and accelerate it in the player direction
+        GameObject item = Instantiate(itemPrefab, transform.position, Quaternion.identity);
+        Rigidbody2D itemRigidbody = item.GetComponent<Rigidbody2D>();
 
-    // Calculate the direction towards the player
-    Vector2 direction = (GameObject.FindGameObjectWithTag("Player").transform.position - transform.position).normalized;
+        // Calculate the direction towards the player
+        Vector2 direction = (GameObject.FindGameObjectWithTag("Player").transform.position - transform.position).normalized;
 
-    // Add an impulse force to the rigidbody in the player direction
-    itemRigidbody.AddForce(direction * 2f, ForceMode2D.Impulse);
+        // Add an impulse force to the rigidbody in the player direction
+        itemRigidbody.AddForce(direction * 2f, ForceMode2D.Impulse);
 
-    // Set the drag property of the rigidbody to gradually slow down the projectile
-    itemRigidbody.drag = 1f;
+        // Set the drag property of the rigidbody to gradually slow down the projectile
+        itemRigidbody.drag = 1f;
   }
 
 }

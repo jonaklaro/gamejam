@@ -33,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &306008528457816775
 SpriteRenderer:
@@ -102,6 +102,7 @@ MonoBehaviour:
   itemPrefab: {fileID: 4393626089816851286, guid: a3a2dde36170e384ca14a9e8d2b4ef46, type: 3}
   dropDelay: 2
   dropRadius: 2
+  animator: {fileID: 5108108435197018346}
 --- !u!58 &306008528457816769
 CircleCollider2D:
   m_ObjectHideFlags: 0

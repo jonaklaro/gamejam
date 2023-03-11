@@ -136,6 +136,7 @@ MonoBehaviour:
   playerMovement: {fileID: 370890261740299184}
   healthBarSpriteLeft: {fileID: 0}
   healthBarSpriteRight: {fileID: 0}
+  highscoreText: {fileID: 0}
 --- !u!95 &5499845512638176285
 Animator:
   serializedVersion: 4
