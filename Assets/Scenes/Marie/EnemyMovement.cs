@@ -1,7 +1,4 @@
-using System;
 using System.Collections;
-using Unity.Mathematics;
-using UnityEditor.Rendering;
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
@@ -15,7 +12,6 @@ public class EnemyMovement : MonoBehaviour
     private Vector2 movement;
 
     [SerializeField] private int shootTime;
-    [SerializeField] private int waitTime;
 
     private int[] behaviour;
     private int index;
@@ -83,9 +79,6 @@ public class EnemyMovement : MonoBehaviour
 
     private void GetAgressive(Vector2 direction)
     {
-         /*transform.position =
-                Vector2.MoveTowards(this.transform.position, playerPos.transform.position, speed * Time.deltaTime);
-            transform.rotation = Quaternion.Euler(Vector3.forward * angle);*/
         rb.MovePosition((Vector2)transform.position + (direction * speed * Time.fixedDeltaTime));
         if(isShooting) return;
         StartCoroutine(TimeBetweenShoots());
@@ -95,15 +88,6 @@ public class EnemyMovement : MonoBehaviour
     {
         StartCoroutine(TimeBetweenShoots());
     }
-
-    /*private IEnumerator WalkBackToPlace(float angle)
-    {
-        yield return new WaitForSeconds(waitTime);
-        transform.position = Vector2.MoveTowards(this.transform.position, guardingPos.transform.position,
-            speed * Time.deltaTime);
-        transform.rotation = Quaternion.Euler(Vector3.forward * angle);
-        
-    }*/
 
     private IEnumerator TimeBetweenShoots()
     {
@@ -115,7 +99,16 @@ public class EnemyMovement : MonoBehaviour
         isShooting = false;
 
     }
+
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.CompareTag("Wall"))
+        {
+            Debug.Log("Wall detected");
+        }
+    }
     
+
     private void StartShooting()
     {
         GameObject bullet = Instantiate(bulletPrefab, shootPos.transform.position, Quaternion.identity);
