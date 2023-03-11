@@ -1,17 +1,25 @@
 using System;
 using System.Collections;
+using Unity.Mathematics;
+using UnityEditor.Rendering;
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
     [Header("Enemy Stats")] [SerializeField]
     private float range;
+
+    [SerializeField] private float standingRange;
     [SerializeField] private float stopFollowing;
 
     [SerializeField] private int shootTime;
     [SerializeField] private int waitTime;
 
+    private int[] behaviour;
+    private int index;
+
     [SerializeField] private bool isShooting;
+    [SerializeField] private bool inRange = true;
     private float distance;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform shootPos;
@@ -24,6 +32,7 @@ public class EnemyMovement : MonoBehaviour
     private void Start()
     {
         guardingPos = transform;
+        behaviour = new[] { 0, 1, 2, 3 };
     }
 
     // Update is called once per frame
@@ -35,16 +44,48 @@ public class EnemyMovement : MonoBehaviour
         direction.Normalize();
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
+      
         if (distance < range)
         {
-            GetAgressive(angle);
-            range = stopFollowing;
-        }
+            index = behaviour[0];
+            /*GetAgressive(angle);
+            range = stopFollowing;*/
 
+        }
+        
         if (distance > range)
         {
-            range = 5;
-            //StartCoroutine(WalkBackToPlace());
+           index = behaviour[1];
+        }
+
+        if (distance < standingRange)
+        {
+            index = behaviour[2];
+        }
+
+        if (!inRange)
+        {
+            index = behaviour[3];
+        }
+        
+
+        
+        switch (behaviour[index])
+        {
+            case 0:
+                GetAgressive(angle);
+                range = stopFollowing;
+                break;
+            case 1:
+                range = 5;
+                break;
+            case 2:
+                JustShootGodDammit();
+                break;
+            case 3:
+                StartCoroutine(WalkBackToPlace());
+                break;
+
         }
 
 
@@ -59,13 +100,35 @@ public class EnemyMovement : MonoBehaviour
         StartCoroutine(TimeBetweenShoots());
     }
 
-    /*private IEnumerator WalkBackToPlace()
+    private void JustShootGodDammit()
+    {
+        StartCoroutine(TimeBetweenShoots());
+    }
+
+    private IEnumerator WalkBackToPlace()
     {
         yield return new WaitForSeconds(waitTime);
         transform.position = Vector2.MoveTowards(this.transform.position, guardingPos.transform.position,
             speed * Time.deltaTime);
         
-    }*/
+    }
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.CompareTag("Player"))
+        {
+            inRange = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            inRange = false;
+        }
+    }
+
     private IEnumerator TimeBetweenShoots()
     {
         // Just in case avoid concurrent routines
