@@ -14,6 +14,7 @@ public class playerMovement : MonoBehaviour
     [SerializeField] private ParticleSystem particThree;
     [SerializeField] private ParticleSystem particFour;
     private ParticleSystem[] particles;
+    PlayerShoot playerShoot;
 
 
 
@@ -22,12 +23,15 @@ public class playerMovement : MonoBehaviour
         particles = new[] { particOne, particTwo, particThree, particFour };
         soundManager = SoundManager.instance;
         rb = GetComponent<Rigidbody2D>();
+        playerShoot = GetComponent<PlayerShoot>();
         soundManager.SetVolume("MasterVolume", -20f);
         //make a list with "8Bit1" and "8Bit2" and then randomly pick one of them
-        string randomMusic = "8Bit" + Random.Range(1, 2);
+        string randomMusic = "8Bit" + Random.Range(1, 3).ToString();
+        Debug.Log("Random Music: " + randomMusic);
         soundManager.PlayMusic(randomMusic);
 
-        
+        //Rotation Lock
+        rb.freezeRotation = true;
     }
 
     private void Update()
@@ -68,6 +72,7 @@ public class playerMovement : MonoBehaviour
         animator.SetFloat("Horizontal", movementVector.x);
         animator.SetFloat("Vertical", movementVector.y);
         animator.SetFloat("Speed", movementVector.sqrMagnitude);
+        animator.SetBool("IsShooting", playerShoot.isShooting);
 
     }
 

@@ -120,6 +120,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 2360038324825771038, guid: 80d67463eefcb1b44a39e2b1a03db5fd, type: 3}
   shootInterval: 3
   projectileLifetime: 3
+  isShooting: 0
 --- !u!114 &6042282131985570064
 MonoBehaviour:
   m_ObjectHideFlags: 0
