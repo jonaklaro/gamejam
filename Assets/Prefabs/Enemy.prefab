@@ -135,6 +135,7 @@ MonoBehaviour:
   stopFollowRadius: 7
   moveSpeed: 2
   decelerationFactor: 0.5
+  colliderTilePositions: []
   bullet: {fileID: 2019084812566056174, guid: fceee93b0883803429b9fa9622f7ea6b, type: 3}
   shootTime: 1
 --- !u!50 &971938349552868482

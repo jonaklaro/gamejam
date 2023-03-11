@@ -22489,8 +22489,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c21b59164c4e63544a831c378b37e8a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 971938349552868488, guid: f2ec3db7aa0f51647a9f1bfde0c55cea, type: 3}
+  enemyPrefab: {fileID: 971938349552868488, guid: f2ec3db7aa0f51647a9f1bfde0c55cea, type: 3}
   enemySpawnRatePerMinute: 10
+  colliderTilemap: {fileID: 1501052201}
 --- !u!1001 &1836357482
 PrefabInstance:
   m_ObjectHideFlags: 0

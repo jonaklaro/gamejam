@@ -4,43 +4,55 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance;
-    public List<Friends> friends;
-    public bool itemDropped = false;
-    [SerializeField] Animator animator;
+  public static GameManager Instance;
+  public List<Friends> friends;
+  public bool itemDropped = false;
+  [SerializeField] Animator animator;
 
-    public bool hasLevelEnded = false;
+  public bool hasLevelEnded = false;
+  SoundManager soundManager;
 
-    private void Awake()
+
+  private void Awake()
+  {
+    if (Instance == null)
     {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+      Instance = this;
+    }
+    else
+    {
+      Destroy(gameObject);
+    }
+  }
+
+  private void Start()
+  {
+    soundManager = SoundManager.instance;
+    soundManager.SetVolume("MasterVolume", -20f);
+    //make a list with "8Bit1" and "8Bit2" and then randomly pick one of them
+    string randomMusic = "8Bit" + Random.Range(1, 3).ToString();
+    Debug.Log("Random Music: " + randomMusic);
+    soundManager.PlayMusic(randomMusic);
+  }
+
+  private void Update()
+  {
+    bool allFriendsDroppedItem = true;
+
+    foreach (Friends friend in friends)
+    {
+      if (!friend.itemDropped)
+      {
+        allFriendsDroppedItem = false;
+        break;
+      }
     }
 
-    private void Update()
+    if (allFriendsDroppedItem)
     {
-        bool allFriendsDroppedItem = true;
-
-        foreach (Friends friend in friends)
-        {
-            if (!friend.itemDropped)
-            {
-                allFriendsDroppedItem = false;
-                break;
-            }
-        }
-
-        if (allFriendsDroppedItem)
-        {
-            itemDropped = true;
-            hasLevelEnded = true;
-            Debug.Log("All friends have dropped the item - game over!");
-        }
+      itemDropped = true;
+      hasLevelEnded = true;
+      Debug.Log("All friends have dropped the item - game over!");
     }
+  }
 }
