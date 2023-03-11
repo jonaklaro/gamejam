@@ -17,7 +17,7 @@ public class ArealAttackSpawner : MonoBehaviour
     [SerializeField] private float range;
     private bool itsHot = false;
     [SerializeField] private ParticleSystem arealEffect;
-    
+
 
     private void Start()
     {
@@ -25,25 +25,27 @@ public class ArealAttackSpawner : MonoBehaviour
         for (int i = 0; i < spawningPoint.Length; i++)
         {
             spawningPoint[i] = this.transform.GetChild(i);
+            Collider2D areaCollider = spawningPoint[i].gameObject.GetComponent<Collider2D>();
+            areaCollider.enabled = false;
+            
             Debug.Log(spawningPoint);
         }
-        
+
     }
 
     private void Update()
     {
         for (int i = 0; i < spawningPoint.Length; i++)
         {
-            
+
             float distance = GetDistance(spawningPoint[i].position);
-            Debug.Log(distance);
 
             if (distance < range)
             {
                 spawningPoint[i].gameObject.SetActive(true);
                 ActivateArea(spawningPoint[i].gameObject);
             }
-            
+
         }
     }
 
@@ -82,6 +84,7 @@ public class ArealAttackSpawner : MonoBehaviour
         yield return new WaitForSecondsRealtime(timeAfterCollider);
         DeactivateCollider(area);
     }
+
     private void DeactivateCollider(GameObject area)
     {
         Collider2D areaCollider = area.gameObject.GetComponent<Collider2D>();
@@ -97,16 +100,4 @@ public class ArealAttackSpawner : MonoBehaviour
         itsHot = false;
     }
 
-    private void OnTriggerEnter2D(Collider2D col)
-    {
-        if (col.gameObject.CompareTag("Player"))
-        {
-            MakeDamage();
-        }
-    }
-
-    private void MakeDamage()
-    {
-        Debug.Log("Ich hitte den Player");
-    }
 }
