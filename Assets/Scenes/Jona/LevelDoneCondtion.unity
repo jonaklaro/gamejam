@@ -352,6 +352,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelLoader
       objectReference: {fileID: 0}
+    - target: {fileID: 52667340792958917, guid: 44789cd2bc7fc644da53f1d867c7bf93, type: 3}
+      propertyPath: m_Alpha
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6706628531110703284, guid: 44789cd2bc7fc644da53f1d867c7bf93, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 901

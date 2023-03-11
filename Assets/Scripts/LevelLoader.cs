@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class LevelLoader : MonoBehaviour
 {
   public Animator transition;
-  public float transitionTime = 1f;
+  public float transitionTime = 2f;
 
   private GameManager gameManager;
 
@@ -18,11 +18,6 @@ public class LevelLoader : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
-    if (Input.GetKeyDown(KeyCode.E))
-    {
-      LoadNextLevel();
-    }
-    Debug.Log("LevelLoader: " + gameManager.hasLevelEnded);
     if (gameManager.hasLevelEnded == true)
     {
       LoadNextLevel();
