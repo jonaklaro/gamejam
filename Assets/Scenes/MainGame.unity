@@ -254,7 +254,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a95c38c0bc498d4c826aa15072c50f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 1731507824}
   followDelay: 0.1
 --- !u!1001 &309093132
 PrefabInstance:
@@ -19180,6 +19180,11 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &1731507824 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 370890261740299185, guid: 32047d66a0692934a8855851e9e8f5de, type: 3}
+  m_PrefabInstance: {fileID: 309093132}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2079158569
 GameObject:
   m_ObjectHideFlags: 0
