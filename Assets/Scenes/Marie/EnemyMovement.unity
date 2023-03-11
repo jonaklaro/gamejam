@@ -247,7 +247,7 @@ GameObject:
   - component: {fileID: 1410108670}
   m_Layer: 0
   m_Name: Wall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -391,7 +391,7 @@ GameObject:
   - component: {fileID: 1685193189}
   m_Layer: 0
   m_Name: EnemyBody
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -480,7 +480,6 @@ MonoBehaviour:
   standingRange: 3
   stopFollowing: 10
   shootTime: 2
-  waitTime: 3
   isShooting: 0
   bulletPrefab: {fileID: 2019084812566056174, guid: fceee93b0883803429b9fa9622f7ea6b, type: 3}
   shootPos: {fileID: 1556082469}
@@ -496,7 +495,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
