@@ -64,7 +64,7 @@ public class NewEnemyMovement : MonoBehaviour
       // Stop moving and move back to starting position
       movementDirection = Vector2.zero;
       playerInRange = false;
-      transform.position = Vector2.MoveTowards(transform.position, startingPosition, moveSpeed * Time.deltaTime);
+      // transform.position = Vector2.MoveTowards(transform.position, startingPosition, moveSpeed * Time.deltaTime);
     }
 
     // Check for obstacles in the way
