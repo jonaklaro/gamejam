@@ -28,14 +28,33 @@ public class Friends : MonoBehaviour
     {
       playerInRange = false;
       inRangeTime = 0f;
-      GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f);
-      itemDropped = false; // Reset itemDropped variable
+
+
+      if (itemDropped)
+      {
+        GetComponent<SpriteRenderer>().color = new Color(.5f, .5f, .5f);
+        // itemDropped = false; // Reset itemDropped variable
+        //set itemDropped to false after a certain amount of time
+        StartCoroutine(ResetItemDrop());
+      } else
+      {
+        GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f);
+      }
+
     }
+  }
+
+  IEnumerator ResetItemDrop()
+  {
+    yield return new WaitForSeconds(10f);
+    itemDropped = false;
+    GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f);
+
   }
 
   private void Update()
   {
-    if (playerInRange)
+    if (playerInRange && !itemDropped)
     {
       // change color of this object to orange
       GetComponent<SpriteRenderer>().color = new Color(1f, 0.5f, 0f);
