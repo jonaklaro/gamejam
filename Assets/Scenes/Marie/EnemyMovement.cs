@@ -11,6 +11,7 @@ public class EnemyMovement : MonoBehaviour
 
     [SerializeField] private float standingRange;
     [SerializeField] private float stopFollowing;
+    private Rigidbody2D rb;
 
     [SerializeField] private int shootTime;
     [SerializeField] private int waitTime;
@@ -33,6 +34,7 @@ public class EnemyMovement : MonoBehaviour
     {
         guardingPos = transform;
         behaviour = new[] { 0, 1, 2, 3 };
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -90,9 +92,10 @@ public class EnemyMovement : MonoBehaviour
 
     private void GetAgressive(float angle)
     {
-         transform.position =
+         /*transform.position =
                 Vector2.MoveTowards(this.transform.position, playerPos.transform.position, speed * Time.deltaTime);
-            transform.rotation = Quaternion.Euler(Vector3.forward * angle);
+            transform.rotation = Quaternion.Euler(Vector3.forward * angle);*/
+            rb.velocity = new Vector2(playerPos.transform.position.x, playerPos.transform.position.y);
         if(isShooting) return;
         StartCoroutine(TimeBetweenShoots());
     }
