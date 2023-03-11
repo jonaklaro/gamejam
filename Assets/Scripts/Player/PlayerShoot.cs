@@ -55,6 +55,7 @@ public class PlayerShoot : MonoBehaviour
       audioSource.clip = clip;
       audioSource.time = 0.15f;
       audioSource.Play();
+      Debug.Log(clip);
 
       ShootProjectile();
       lastShootTime = Time.time;

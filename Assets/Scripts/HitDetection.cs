@@ -20,7 +20,6 @@ public class HitDetection : MonoBehaviour
             }
         }
 
-        Debug.Log(transform.position);
        
         ParticleSystem particleObject = Instantiate(particleHit, transform.position, Quaternion.identity);
 
