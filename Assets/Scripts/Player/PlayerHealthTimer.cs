@@ -25,6 +25,10 @@ public class PlayerHealthTimer : MonoBehaviour
         {
             Destroy(other.gameObject);
             GatherRessource(15f);
+        } 
+        else if (other.gameObject.CompareTag("ProjectileEnemy"))
+        {
+            TakeDamage(5);
         }
     }
 
@@ -49,6 +53,8 @@ public class PlayerHealthTimer : MonoBehaviour
     public void TakeDamage(float timeLost)
     {
         healthTimer -= timeLost;
+        healthBarSpriteLeft.fillAmount = healthTimer / healthTimerMax;
+        healthBarSpriteRight.fillAmount = healthBarSpriteLeft.fillAmount;
         if (healthTimer < 0)
             Die();
     }
@@ -57,6 +63,8 @@ public class PlayerHealthTimer : MonoBehaviour
     {
         healthTimer += timeGained;
         healthTimer = Mathf.Min(healthTimer, healthTimerMax);
+        healthBarSpriteLeft.fillAmount = healthTimer / healthTimerMax;
+        healthBarSpriteRight.fillAmount = healthBarSpriteLeft.fillAmount;
     }
 
     void Die()

@@ -11,7 +11,7 @@ public class EnemyBullet : MonoBehaviour
 
     private float timer;
     
-    void Start()
+    void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
@@ -39,8 +39,7 @@ public class EnemyBullet : MonoBehaviour
     {
         if (col.gameObject.tag.Equals("Player"))
         {
-            Debug.Log("The PLayer was hit");
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 }
