@@ -7,6 +7,9 @@ public class PlayerHealthTimer : MonoBehaviour
 {
     [SerializeField] float healthTimer = 30f;
     [SerializeField] float healthTimerMax = 60f;
+
+    [SerializeField] playerMovement playerMovement;
+
     [SerializeField] Image healthBarSpriteLeft = null;
     [SerializeField] Image healthBarSpriteRight = null;
 
@@ -40,7 +43,9 @@ public class PlayerHealthTimer : MonoBehaviour
 
     void Die()
     {
-        Debug.Log("you ded");
+        //Debug.Log("you ded");
+        playerMovement.Die();
+        GetComponent<PlayerShoot>().enabled = false;
         enabled = false;
     }
 }

@@ -16,8 +16,7 @@ public class playerMovement : MonoBehaviour
   {
     rb = GetComponent<Rigidbody2D>();
     soundManager = SoundManager.instance;
-    soundManager.SetVolume("MasterVolume", -15f);
-
+    soundManager.SetVolume("MasterVolume", -40f);
     soundManager.PlayMusic("8Bit2");
   }
 
@@ -56,5 +55,11 @@ public class playerMovement : MonoBehaviour
     animator.SetFloat("Speed", movementVector.sqrMagnitude);
 
   }
+
+    public void Die()
+    {
+        rb.velocity = Vector3.zero;
+        enabled = false;
+    }
 }
 
