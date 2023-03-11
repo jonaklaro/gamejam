@@ -13,6 +13,17 @@ public class PlayerHealthTimer : MonoBehaviour
     [SerializeField] Image healthBarSpriteLeft = null;
     [SerializeField] Image healthBarSpriteRight = null;
 
+    void OnTriggerEnter2D(Collider2D other)
+    {
+
+        if (other.gameObject.CompareTag("Resource"))
+        {
+            Debug.Log("Resource collected");
+            Destroy(other.gameObject);
+            GatherRessource(10f);
+        }
+    }
+
     private void Start()
     {
         healthTimer = Mathf.Min(healthTimer, healthTimerMax);
@@ -35,7 +46,7 @@ public class PlayerHealthTimer : MonoBehaviour
             Die();
     }
 
-    public void GatherRessource(float timeGained)
+    void GatherRessource(float timeGained)
     {
         healthTimer += timeGained;
         healthTimer = Mathf.Min(healthTimer, healthTimerMax);
