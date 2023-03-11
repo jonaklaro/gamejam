@@ -13,6 +13,7 @@ public class PlayerHealthTimer : MonoBehaviour
 
     [SerializeField] Image healthBarSpriteLeft = null;
     [SerializeField] Image healthBarSpriteRight = null;
+    
 
     int highscore = 0;
 
