@@ -43,4 +43,21 @@ public class FirstBoss : MonoBehaviour
         Instantiate(bossStats.bullet, shootingPos.position, Quaternion.identity);
 
     }
+
+    private void GetDamage(int damage)
+    {
+        bossStats.health -= damage;
+
+        if (bossStats.health < 1)
+        {
+            JustDie();
+        }
+    }
+
+    private void JustDie()
+    {
+        //abspielen von Animation
+        //Destroy(this.gameObject);
+        //Load new scene etc.
+    }
 }

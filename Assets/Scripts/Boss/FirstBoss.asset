@@ -19,4 +19,4 @@ MonoBehaviour:
   player: {fileID: 4889195938829821586, guid: 6bc47941eb7c3364184c693b04a91e26, type: 3}
   particleEffect: {fileID: 0}
   arealEffect: {fileID: 0}
-  shootTime: 0
+  shootTime: 0.3
