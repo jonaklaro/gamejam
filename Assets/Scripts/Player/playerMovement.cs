@@ -16,8 +16,7 @@ public class playerMovement : MonoBehaviour
   {
     rb = GetComponent<Rigidbody2D>();
     soundManager = SoundManager.instance;
-    soundManager.SetVolume("MasterVolume", -15f);
-
+    soundManager.SetVolume("MasterVolume", -40f);
     soundManager.PlayMusic("8Bit2");
   }
 
@@ -55,11 +54,12 @@ public class playerMovement : MonoBehaviour
     animator.SetFloat("Vertical", movementVector.y);
     animator.SetFloat("Speed", movementVector.sqrMagnitude);
 
-        //Rotation Lock
-        rb.freezeRotation = true;
-        // sonst so
-        // rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+  }
 
+    public void Die()
+    {
+        rb.velocity = Vector3.zero;
+        enabled = false;
     }
 }
 
