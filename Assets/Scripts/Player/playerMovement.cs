@@ -11,9 +11,9 @@ public class playerMovement : MonoBehaviour
     Rigidbody2D rb;
     SoundManager soundManager;
     PlayerShoot playerShoot;
-    public float dashSpeed = 20f;
-    public float dashDuration = 0.2f;
-    public float dashCooldown = 2f;
+    [SerializeField] float dashSpeed = 20f;
+    [SerializeField] float dashDuration = 0.2f;
+    [SerializeField] float dashCooldown = 2f;
     private float dashTimer = 0f;
     private float dashCooldownTimer = 0f;
 
