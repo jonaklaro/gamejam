@@ -16,6 +16,10 @@ public class EnemyHealthCheck : MonoBehaviour
 
   public void ReduceEnemyLife()
   {
+
+    //make enemy flash red when hit
+    StartCoroutine(FlashRed());
+
     if (enemyLife > 1)
     {
       AudioSource audioSource = GetComponent<AudioSource>();
@@ -41,6 +45,14 @@ public class EnemyHealthCheck : MonoBehaviour
     }
   }
 
+  private System.Collections.IEnumerator FlashRed()
+  {
+    SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+    spriteRenderer.color = Color.red;
+    yield return new WaitForSeconds(0.1f);
+    spriteRenderer.color = Color.white;
+  }
+  
   float GetDistance(GameObject other)
   {
     Vector3 vecBetweenObjects = transform.position - other.transform.position;
