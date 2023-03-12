@@ -38,9 +38,9 @@ public class EnemyHealthCheck : MonoBehaviour
       audioSource.clip = SoundManager.instance.GetAudioClip("Explosion_Tiny_4");
       audioSource.time = 0.0f;
       audioSource.Play();
+      Destroy(audioSource, audioSource.clip.length);
 
       //delete audio source after sound is played
-      // Destroy(audioSource, audioSource.clip.length);
       Destroy(gameObject); // Destroy the enemy if its life reaches 0
     }
   }
@@ -52,7 +52,7 @@ public class EnemyHealthCheck : MonoBehaviour
     yield return new WaitForSeconds(0.1f);
     spriteRenderer.color = Color.white;
   }
-  
+
   float GetDistance(GameObject other)
   {
     Vector3 vecBetweenObjects = transform.position - other.transform.position;
