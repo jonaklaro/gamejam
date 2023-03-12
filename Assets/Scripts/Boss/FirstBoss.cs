@@ -38,17 +38,18 @@ public class FirstBoss : MonoBehaviour
                 // Calculate the angle to rotate the enemy
                 float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
-            // Apply the rotation to the enemy's transform
-            transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
-            Vector2 playerDirection = playerTransform.position - transform.position;
-            playerDirection = playerDirection.normalized;
-            StartCoroutine(TimeBetweenShoots(playerDirection));
-        }
-        else
-        {
-            StartCoroutine(WinScrenn());
-        }
+                // Apply the rotation to the enemy's transform
+                transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
+                Vector2 playerDirection = playerTransform.position - transform.position;
+                playerDirection = playerDirection.normalized;
+                StartCoroutine(TimeBetweenShoots(playerDirection));
+            }
+            else
+            {
+                StartCoroutine(WinScrenn());
+            }
 
+        }
     }
 
     public void SetBool(bool active)
