@@ -99,6 +99,8 @@ public class playerMovement : MonoBehaviour
         Debug.Log("Death Sound: " + deathSound);
         audioSource.Play();
 
+        animator.SetBool("IsShooting", false);
+
         //particlesystem and playerobject destroy
         for (int i = 0; i < particles.Length; i++)
         {

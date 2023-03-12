@@ -117,11 +117,6 @@ public class NewEnemyMovement : MonoBehaviour
 
     }
 
-    void Die()
-    {
-        Destroy(gameObject);
-    }
-
     Vector3Int FindClosestTile(List<TileDistancePair> surroundingTiles)
     {
         int tileIndex= 0;
