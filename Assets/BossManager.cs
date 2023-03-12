@@ -8,6 +8,7 @@ public class BossManager : MonoBehaviour
 
     [SerializeField] private FirstBoss bossShoot;
     [SerializeField] private GameObject spawner;
+    [SerializeField] Animator animator;
 
     private float timer;
 
@@ -19,6 +20,8 @@ public class BossManager : MonoBehaviour
 
     private IEnumerator StartArealPhase()
     {
+        animator.SetBool("IsShooting", false);
+        animator.SetBool("CoolDown", true);
         spawner.SetActive(true);
         bossShoot.SetBool(false);
         yield return new WaitForSeconds(timeUntilNextPhase);
@@ -27,6 +30,7 @@ public class BossManager : MonoBehaviour
     
     private IEnumerator StartShootPhase()
     {
+        animator.SetBool("IsShooting", true);
         bossShoot.SetBool(true);
         spawner.SetActive(false);
         yield return new WaitForSeconds(timeUntilNextPhase);
@@ -35,6 +39,7 @@ public class BossManager : MonoBehaviour
 
     private IEnumerator BossFightStart()
     {
+        animator.SetBool("CoolDown", false);
         yield return new WaitForSeconds(5);
         StartCoroutine(StartShootPhase());
     }

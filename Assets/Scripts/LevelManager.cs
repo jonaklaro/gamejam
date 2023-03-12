@@ -17,6 +17,7 @@ public class LevelManager : MonoBehaviour
 
         if (itemsCollected >= itemsToCollect && !isBossLevel)
         {
+          itemsCollected = 0;
           Debug.Log("Level completed!");
           GameManager.Instance.hasLevelEnded = true;
             // Trigger level completion logic here
