@@ -96,10 +96,16 @@ public class playerMovement : MonoBehaviour
 
         AudioClip deathSound = soundManager.GetAudioClip("bigExplosion");
         //get AudioSource component and play death sound
-        AudioSource audioSource = GetComponent<AudioSource>();
+        //make new AudioSource 
+        AudioSource audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.clip = deathSound;
-        Debug.Log("Death Sound: " + deathSound);
         audioSource.Play();
+        //detroys AudioSource after sound is played
+        Destroy(audioSource, deathSound.length);
+        // AudioSource audioSource = GetComponent<AudioSource>();
+        // audioSource.clip = deathSound;
+        // Debug.Log("Death Sound: " + deathSound);
+        // audioSource.Play();
 
         animator.SetBool("IsShooting", false);
 
