@@ -31,6 +31,7 @@ EditorUserSettings:
       flags: 0
     RecentlyUsedSceneGuid-8:
 <<<<<<< HEAD
+<<<<<<< HEAD
       value: 02075256030c5b025f5f5c71157b084440154e282e2a72317f7a196ae6e56560
       flags: 0
     RecentlyUsedSceneGuid-9:
@@ -43,6 +44,12 @@ EditorUserSettings:
       flags: 0
     RecentlyUsedSceneGuid-7:
       value: 5b01025556070b090958557042775c44474e4a797f7d75687c7f4b64b2e1603b
+>>>>>>> MainMenu
+=======
+      value: 010002525505505a0f5d5b7a1577084417161a7275297e60287e4560e7e2603a
+      flags: 0
+    RecentlyUsedSceneGuid-9:
+      value: 5357050456510f58585b0a2040270944414e4f297a7d7263292c1e66b1e46561
 >>>>>>> MainMenu
       flags: 0
     vcSharedLogLevel:
