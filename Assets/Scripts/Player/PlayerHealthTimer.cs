@@ -1,25 +1,28 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerHealthTimer : MonoBehaviour
 {
   [SerializeField] float healthTimer = 30f;
   [SerializeField] float healthTimerMax = 60f;
 
-    [SerializeField] bool reduceHealthOverTime;
+    [SerializeField] bool isBossLevel;
 
   [SerializeField] Color color1;
   [SerializeField] Color color2;
 
   [SerializeField] playerMovement playerMovement;
+    [SerializeField] TextMeshProUGUI friendCounterText;
 
   [SerializeField] Image healthBarSpriteLeft = null;
   [SerializeField] Image healthBarSpriteRight = null;
 
   private bool playerNotDead = true;
 
-  int highscore = 0;
   [SerializeField] LevelManager levelManager;
+
+    int friendCounter = 0;
 
   private void Start()
   {
@@ -46,7 +49,7 @@ public class PlayerHealthTimer : MonoBehaviour
 
   void Update()
   {
-        if(reduceHealthOverTime)
+        if(!isBossLevel)
             healthTimer -= Time.deltaTime;
 
         float fillAmount = healthTimer / healthTimerMax;
@@ -71,6 +74,13 @@ public class PlayerHealthTimer : MonoBehaviour
 
   void GatherRessource(float timeGained)
   {
+        if (!isBossLevel)
+        {
+            friendCounter++;
+            friendCounterText.text = $"{friendCounter} / 6";
+        }
+
+
     healthTimer += timeGained;
     healthTimer = Mathf.Min(healthTimer, healthTimerMax);
     healthBarSpriteLeft.fillAmount = healthTimer / healthTimerMax;
