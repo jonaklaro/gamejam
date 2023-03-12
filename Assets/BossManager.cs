@@ -17,9 +17,6 @@ public class BossManager : MonoBehaviour
         StartCoroutine(BossFightStart());
         spawner.SetActive(false);
 
-        //get sound manager
-        SoundManager soundManager = FindObjectOfType<SoundManager>();
-        soundManager.PlayMusic("BossMusic");
 
     }
 

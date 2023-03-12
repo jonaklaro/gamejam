@@ -25,6 +25,10 @@ public class FirstBoss : MonoBehaviour
   {
     bossHealth = GetComponent<BossHealth>();
     Debug.Log(bossfigthover);
+
+    //get sound manager
+    SoundManager soundManager = FindObjectOfType<SoundManager>();
+    soundManager.PlayMusic("BossMusic");
   }
 
   // Update is called once per frame
