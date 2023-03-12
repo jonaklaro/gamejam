@@ -75,12 +75,13 @@ public class PlayerShoot : MonoBehaviour
     // Add a force to the projectile to make it move in the direction of the mouse
     Rigidbody2D projectileRb = newProjectile.GetComponent<Rigidbody2D>();
     Vector2 shootDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+         
     projectileRb.AddForce(shootDirection.normalized * 500f);
 
     // Rotate the projectile to face the direction of the mouse
     Vector3 direction = shootDirection.normalized;
     float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-    newProjectile.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+    newProjectile.transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
 
     // Destroy the projectile after its lifetime has expired
     Destroy(newProjectile, projectileLifetime);

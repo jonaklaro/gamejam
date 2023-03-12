@@ -15,6 +15,11 @@ public class playerMovement : MonoBehaviour
     [SerializeField] private ParticleSystem particFour;
     private ParticleSystem[] particles;
     PlayerShoot playerShoot;
+    [SerializeField] float dashSpeed = 20f;
+    [SerializeField] float dashDuration = 0.2f;
+    [SerializeField] float dashCooldown = 2f;
+    private float dashTimer = 0f;
+    private float dashCooldownTimer = 0f;
 
 
 
@@ -24,11 +29,8 @@ public class playerMovement : MonoBehaviour
         soundManager = SoundManager.instance;
         rb = GetComponent<Rigidbody2D>();
         playerShoot = GetComponent<PlayerShoot>();
-        soundManager.SetVolume("MasterVolume", -20f);
-        //make a list with "8Bit1" and "8Bit2" and then randomly pick one of them
-        string randomMusic = "8Bit" + Random.Range(1, 3).ToString();
-        Debug.Log("Random Music: " + randomMusic);
-        soundManager.PlayMusic(randomMusic);
+
+        
 
         //Rotation Lock
         rb.freezeRotation = true;
@@ -40,40 +42,51 @@ public class playerMovement : MonoBehaviour
         Move();
     }
 
-    void Move()
+     private void Move()
     {
-        //Rotation Lock
+        // Apply rotation lock
         rb.freezeRotation = true;
 
+        // Get input axis
         float horizontalInput = Input.GetAxisRaw("Horizontal");
         float verticalInput = Input.GetAxisRaw("Vertical");
+        Vector2 movementVector = new Vector2(horizontalInput, verticalInput).normalized;
 
-        // Create a movement vector from the input axis
-        Vector2 movementVector = new Vector2(horizontalInput, verticalInput);
+        // Check for dash input
+        if (Input.GetKeyDown(KeyCode.LeftShift) && dashCooldownTimer <= 0f)
+        {
+            // Start the dash
+            dashTimer = dashDuration;
+            dashCooldownTimer = dashCooldown;
+        }
 
-        // Normalize the movement vector to prevent faster diagonal movement
-        movementVector = movementVector.normalized;
+        // Apply movement
+        if (dashTimer > 0f)
+        {
+            rb.velocity = movementVector * dashSpeed;
+        }
+        else
+        {
+            rb.velocity = movementVector * moveSpeed;
+        }
 
-        // Get the mouse position in world space
+        // Update timers
+        dashTimer -= Time.deltaTime;
+        dashCooldownTimer -= Time.deltaTime;
+
+        // Get mouse position and calculate direction vector
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePosition.z = 0f;
-
-        // Calculate the direction vector from the player to the mouse
         Vector3 direction = (mousePosition - transform.position).normalized;
 
-        // Rotate the player to face the mouse position
-        //transform.rotation = Quaternion.LookRotation(Vector3.forward, direction);
+        // Rotate player to face mouse position
+        // transform.rotation = Quaternion.LookRotation(Vector3.forward, direction);
 
-        // Move the player in the movement direction using Rigidbody2D velocity
-        rb.velocity = movementVector * moveSpeed;
-
-        
-
+        // Update animator parameters
         animator.SetFloat("Horizontal", movementVector.x);
         animator.SetFloat("Vertical", movementVector.y);
         animator.SetFloat("Speed", movementVector.sqrMagnitude);
         animator.SetBool("IsShooting", playerShoot.isShooting);
-
     }
 
     public void Die()

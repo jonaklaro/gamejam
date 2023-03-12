@@ -311,6 +311,10 @@ PrefabInstance:
       propertyPath: particThree
       value: 
       objectReference: {fileID: 7063044846023485686, guid: c6d65ba4ee4e3c749a7c5a3cc8cdb690, type: 3}
+    - target: {fileID: 370890261740299184, guid: 32047d66a0692934a8855851e9e8f5de, type: 3}
+      propertyPath: dashSpeed
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 370890261740299185, guid: 32047d66a0692934a8855851e9e8f5de, type: 3}
       propertyPath: m_Name
       value: Player
@@ -22505,8 +22509,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c21b59164c4e63544a831c378b37e8a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 971938349552868488, guid: f2ec3db7aa0f51647a9f1bfde0c55cea, type: 3}
+  enemyPrefab: {fileID: 971938349552868488, guid: f2ec3db7aa0f51647a9f1bfde0c55cea, type: 3}
   enemySpawnRatePerMinute: 10
+  colliderTilemap: {fileID: 1501052201}
 --- !u!1001 &1836357482
 PrefabInstance:
   m_ObjectHideFlags: 0

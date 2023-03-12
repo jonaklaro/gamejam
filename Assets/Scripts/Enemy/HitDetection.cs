@@ -3,7 +3,13 @@ using UnityEngine;
 public class HitDetection : MonoBehaviour
 {
     public ParticleSystem particleHit; // The particle prefab to use
-    
+
+    Rigidbody2D rb;
+
+    private void Update()
+    {
+        rb.freezeRotation= true;
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -31,8 +37,10 @@ public class HitDetection : MonoBehaviour
 
             Destroy(particleObject.gameObject, particleObject.main.duration);
 
-
             Destroy(gameObject);
+
         }
     }
+
+    
 }
