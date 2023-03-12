@@ -1,9 +1,21 @@
+using System;
 using UnityEngine;
 
 public class AreaCollision : MonoBehaviour
 {
-    private void OnCollisionEnter2D(Collision2D col)
+    private PlayerHealthTimer playerHealthTimer;
+    private float timeLost = 20f;
+    private GameObject player;
+
+    private void Start()
     {
+        player = GameObject.FindWithTag("Player");
+        playerHealthTimer = player.GetComponent<PlayerHealthTimer>();
+    }
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        
         if (col.gameObject.CompareTag("Player"))
         {
             MakeDamage();
@@ -13,5 +25,6 @@ public class AreaCollision : MonoBehaviour
     private void MakeDamage()
     {
         Debug.Log("Ich hitte den Player");
+        playerHealthTimer.TakeDamage(timeLost);
     }
 }

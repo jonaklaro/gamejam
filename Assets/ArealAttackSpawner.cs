@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -15,8 +14,8 @@ public class ArealAttackSpawner : MonoBehaviour
     [SerializeField] private float areaCoolDown;
 
     [SerializeField] private float range;
-    private bool itsHot = false;
     [SerializeField] private ParticleSystem arealEffect;
+    private bool isHot;
 
 
     private void Start()
@@ -42,8 +41,12 @@ public class ArealAttackSpawner : MonoBehaviour
 
             if (distance < range)
             {
-                spawningPoint[i].gameObject.SetActive(true);
-                ActivateArea(spawningPoint[i].gameObject);
+                if (!isHot)
+                {
+                    isHot = true;
+                    ActivateArea(spawningPoint[i].gameObject);
+                }
+                
             }
 
         }
@@ -54,7 +57,6 @@ public class ArealAttackSpawner : MonoBehaviour
         SpriteRenderer sprite = spawnPoint.GetComponent<SpriteRenderer>();
         sprite.color = Color.green;
         StartCoroutine(TimeTillColliderIsON(spawnPoint));
-        itsHot = true;
         //Arealeffect starten
     }
 
@@ -97,7 +99,7 @@ public class ArealAttackSpawner : MonoBehaviour
     private IEnumerator WaitTillItsCold()
     {
         yield return new WaitForSeconds(areaCoolDown);
-        itsHot = false;
+        isHot = false;
     }
 
 }
