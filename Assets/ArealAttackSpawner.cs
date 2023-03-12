@@ -14,12 +14,26 @@ public class ArealAttackSpawner : MonoBehaviour
     [SerializeField] private float areaCoolDown;
 
     [SerializeField] private float range;
-    [SerializeField] private ParticleSystem arealEffect;
+    /*private ParticleSystem[] arealEffect;
+    [SerializeField] private ParticleSystem particleOne;
+    [SerializeField] private ParticleSystem particleTwo;
+    [SerializeField] private ParticleSystem particlethree;
+    [SerializeField] private ParticleSystem particleFour;
+    [SerializeField] private ParticleSystem particleFive;
+    [SerializeField] private ParticleSystem particleSix;
+    [SerializeField] private ParticleSystem particleSeven;
+    [SerializeField] private ParticleSystem particleEight;*/
+    
     private bool isHot;
 
 
     private void Awake()
     {
+        /*arealEffect = new[]
+        {
+            particleOne, particleTwo, particlethree, particleFour, particleFive, particleSix, particleSeven,
+            particleEight
+        };*/
         spawningPoint = new Transform[index];
         for (int i = 0; i < spawningPoint.Length; i++)
         {
@@ -40,11 +54,12 @@ public class ArealAttackSpawner : MonoBehaviour
 
             if (distance < range)
             {
-                if (!isHot)
+                ActivateArea(spawningPoint[i].gameObject);
+                /*if (!isHot)
                 {
                     isHot = true;
                     ActivateArea(spawningPoint[i].gameObject);
-                }
+                }*/
                 
             }
 
@@ -53,9 +68,13 @@ public class ArealAttackSpawner : MonoBehaviour
 
     private void ActivateArea(GameObject spawnPoint)
     {
-        GameObject effect = spawnPoint.transform.GetChild(0).gameObject;
-        effect.SetActive(true);
-        StartCoroutine(TimeTillColliderIsON(spawnPoint, effect));
+        /*for (int i = 0; i < arealEffect.Length; i++)
+        {
+            ParticleSystem effekt = Instantiate(arealEffect[i], spawnPoint.transform.position, Quaternion.identity);
+        }
+        */
+
+        StartCoroutine(TimeTillColliderIsON(spawnPoint));
     }
 
     private float GetDistance(Vector2 spawningPoint)
@@ -64,17 +83,17 @@ public class ArealAttackSpawner : MonoBehaviour
         return distance;
     }
 
-    private IEnumerator TimeTillColliderIsON(GameObject area, GameObject effekt)
+    private IEnumerator TimeTillColliderIsON(GameObject area)
     {
         yield return new WaitForSeconds(timeTillCollider);
-        ActivateCollider(area, effekt);
+        ActivateCollider(area);
     }
 
-    private void ActivateCollider(GameObject area, GameObject effect)
+    private void ActivateCollider(GameObject area)
     {
         Collider2D areaCollider = area.gameObject.GetComponent<Collider2D>();
         areaCollider.enabled = true;
-        effect.SetActive(false);
+        //effect.SetActive(false);
         StartCoroutine(TimeTillColliderIsOFF(area));
     }
 
