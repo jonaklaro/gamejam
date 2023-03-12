@@ -6,6 +6,8 @@ public class PlayerHealthTimer : MonoBehaviour
   [SerializeField] float healthTimer = 30f;
   [SerializeField] float healthTimerMax = 60f;
 
+    [SerializeField] bool reduceHealthOverTime;
+
   [SerializeField] Color color1;
   [SerializeField] Color color2;
 
@@ -44,17 +46,19 @@ public class PlayerHealthTimer : MonoBehaviour
 
   void Update()
   {
-    healthTimer -= Time.deltaTime;
-    float fillAmount = healthTimer / healthTimerMax;
-    healthBarSpriteLeft.fillAmount = fillAmount;
-    healthBarSpriteLeft.color = LerpColor(color2, color1, fillAmount);
+        if(reduceHealthOverTime)
+            healthTimer -= Time.deltaTime;
 
-    healthBarSpriteRight.fillAmount = fillAmount;
-    healthBarSpriteRight.color = LerpColor(color2, color1, fillAmount);
-    if (healthTimer < 0 && playerNotDead)
-    {
-      Die();
-    }
+        float fillAmount = healthTimer / healthTimerMax;
+        healthBarSpriteLeft.fillAmount = fillAmount;
+        healthBarSpriteLeft.color = LerpColor(color2, color1, fillAmount);
+
+        healthBarSpriteRight.fillAmount = fillAmount;
+        healthBarSpriteRight.color = LerpColor(color2, color1, fillAmount);
+        if (healthTimer < 0 && playerNotDead)
+        {
+          Die();
+        }
   }
 
   public void TakeDamage(float timeLost)
