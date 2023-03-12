@@ -9,6 +9,7 @@ public class playerMovement : MonoBehaviour
     [SerializeField] Animator animator;
     Rigidbody2D rb;
     SoundManager soundManager;
+    [SerializeField] private SpriteRenderer sprite;
     
     [SerializeField] private ParticleSystem particOne;
     [SerializeField] private ParticleSystem particTwo;
@@ -107,7 +108,8 @@ public class playerMovement : MonoBehaviour
         {
             ParticleSystem part = Instantiate(particles[i], transform.position, Quaternion.identity);
         }
-        Destroy(this.gameObject);
+
+        sprite.enabled = false;
         StartCoroutine(LooseScreen());
     }
 
