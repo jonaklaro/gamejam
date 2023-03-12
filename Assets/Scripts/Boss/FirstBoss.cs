@@ -31,7 +31,7 @@ public class FirstBoss : MonoBehaviour
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
             // Apply the rotation to the enemy's transform
-            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
             Vector2 playerDirection = playerTransform.position - transform.position;
             playerDirection = playerDirection.normalized;
             StartCoroutine(TimeBetweenShoots(playerDirection));
