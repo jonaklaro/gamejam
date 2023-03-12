@@ -1,15 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class ButtonScript : MonoBehaviour
 {
     [SerializeField] private GameObject alphonso;
+    [SerializeField] private SoundManager soundManager;
 
     public void StartButton()
     {
+        soundManager.SetVolume("MasterVolume", -20f);
+        soundManager.PlayMusic("8Bit1");
         SceneManager.LoadScene(3);
+
     }
 
     public void ReturnButton()
