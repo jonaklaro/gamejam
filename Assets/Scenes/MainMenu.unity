@@ -332,55 +332,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 328582496}
   m_CullTransparentMesh: 1
---- !u!1 &641472492
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 641472494}
-  - component: {fileID: 641472493}
-  m_Layer: 0
-  m_Name: POST PROCESSING
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &641472493
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 641472492}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IsGlobal: 1
-  priority: 0
-  blendDistance: 0
-  weight: 1
-  sharedProfile: {fileID: 11400000, guid: f614c6c486a835b48afa3bacb1b10a29, type: 2}
---- !u!4 &641472494
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 641472492}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.2489121, y: 0.17393257, z: 0.2104539}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &650769575
 GameObject:
   m_ObjectHideFlags: 0
@@ -536,7 +487,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4993349934501590336, guid: 15196bf2e4729eb4a8f37504bf679ecc, type: 3}
       propertyPath: audioClips.Array.size
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4993349934501590336, guid: 15196bf2e4729eb4a8f37504bf679ecc, type: 3}
       propertyPath: audioClips.Array.data[7]
@@ -546,6 +497,10 @@ PrefabInstance:
       propertyPath: audioClips.Array.data[8]
       value: 
       objectReference: {fileID: 8300000, guid: 393217870bd711546b91c8eabc87461b, type: 3}
+    - target: {fileID: 4993349934501590336, guid: 15196bf2e4729eb4a8f37504bf679ecc, type: 3}
+      propertyPath: audioClips.Array.data[9]
+      value: 
+      objectReference: {fileID: 8300000, guid: 74d0908f2072a86489cd022b9b0c69f5, type: 3}
     - target: {fileID: 4993349934501590349, guid: 15196bf2e4729eb4a8f37504bf679ecc, type: 3}
       propertyPath: m_Name
       value: SoundManager
