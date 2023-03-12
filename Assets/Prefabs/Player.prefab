@@ -105,10 +105,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5.5
   animator: {fileID: 5499845512638176285}
+  sprite: {fileID: 0}
   particOne: {fileID: 920449678198985598, guid: 53723841b0eccac40b092c4302b9eb8c, type: 3}
   particTwo: {fileID: 7557211617408577700, guid: fbcff320430e5d843a2abfbc726680d2, type: 3}
   particThree: {fileID: 7063044846023485686, guid: c6d65ba4ee4e3c749a7c5a3cc8cdb690, type: 3}
   particFour: {fileID: 2206204674963792704, guid: 1a396fafdd486a74a94011cae5a57e82, type: 3}
+  dashSpeed: 20
+  dashDuration: 0.2
+  dashCooldown: 2
 --- !u!114 &4694281306590166458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,8 +126,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 2360038324825771038, guid: 80d67463eefcb1b44a39e2b1a03db5fd, type: 3}
-  shootInterval: 3
-  projectileLifetime: 3
+  shootInterval: 1
+  projectileLifetime: 5
   isShooting: 0
 --- !u!114 &6042282131985570064
 MonoBehaviour:
@@ -137,12 +141,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b08088e7b3f58a47bbcf72c303a0b2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthTimer: 10
-  healthTimerMax: 10
+  healthTimer: 10000
+  healthTimerMax: 30
+  isBossLevel: 0
+  color1: {r: 1, g: 1, b: 1, a: 0}
+  color2: {r: 1, g: 0.5613208, b: 0.5613208, a: 0}
   playerMovement: {fileID: 370890261740299184}
+  friendCounterText: {fileID: 0}
   healthBarSpriteLeft: {fileID: 0}
   healthBarSpriteRight: {fileID: 0}
-  highscoreText: {fileID: 0}
+  levelManager: {fileID: 0}
 --- !u!95 &5499845512638176285
 Animator:
   serializedVersion: 4
