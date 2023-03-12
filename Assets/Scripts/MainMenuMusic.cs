@@ -4,11 +4,17 @@ using UnityEngine;
 public class MainMenuMusic : MonoBehaviour
 {
 
-    [SerializeField] private SoundManager soundManager;
+  [SerializeField] private SoundManager soundManager;
 
-    private void Start()
+  private void Start()
+  {
+    //if sound manager not null
+    if (soundManager == null)
     {
-        soundManager.SetVolume("MasterVolume", -20f);
-        soundManager.PlayMusic("Lobby");
+      //get the sound manager from previous scene
+      soundManager = FindObjectOfType<SoundManager>();
+      //play the music
+      soundManager.PlayMusic("Lobby");
     }
+  }
 }
