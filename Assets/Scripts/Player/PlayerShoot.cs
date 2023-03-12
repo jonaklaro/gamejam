@@ -91,5 +91,6 @@ public class PlayerShoot : MonoBehaviour
 
     // Destroy the projectile after its lifetime has expired
     Destroy(newProjectile, projectileLifetime);
+    StartCoroutine(StopShooting());
   }
 }
