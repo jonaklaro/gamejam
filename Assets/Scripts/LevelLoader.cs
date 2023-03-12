@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -32,13 +31,13 @@ public class LevelLoader : MonoBehaviour
 
   public void LoadNextLevel()
   {
-    StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
+    StartCoroutine(LoadLevel());
   }
 
-  IEnumerator LoadLevel(int levelIndex)
+  IEnumerator LoadLevel()
   {
     transition.SetTrigger("levelEnd");
     yield return new WaitForSeconds(transitionTime);
-    SceneManager.LoadScene(levelIndex);
+    SceneManager.LoadScene(6);
   }
 }
