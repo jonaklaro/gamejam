@@ -1,5 +1,6 @@
+using System.Collections;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 
 
 public class playerMovement : MonoBehaviour
@@ -106,7 +107,14 @@ public class playerMovement : MonoBehaviour
         {
             ParticleSystem part = Instantiate(particles[i], transform.position, Quaternion.identity);
         }
-       // Destroy(this.gameObject);
+        Destroy(this.gameObject);
+        StartCoroutine(LooseScreen());
+    }
+
+    private IEnumerator LooseScreen()
+    {
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene(4);
     }
 }
 
