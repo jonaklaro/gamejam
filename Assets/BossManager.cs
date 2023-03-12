@@ -38,4 +38,5 @@ public class BossManager : MonoBehaviour
         yield return new WaitForSeconds(5);
         StartCoroutine(StartShootPhase());
     }
+    
 }

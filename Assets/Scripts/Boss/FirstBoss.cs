@@ -14,6 +14,11 @@ public class FirstBoss : MonoBehaviour
     private bool isShooting;
     [SerializeField] private Transform shootingPos;
     private BossHealth bossHealth;
+    [SerializeField] private SpriteRenderer sprite;
+
+    private bool bossfigthover;
+    [SerializeField] private GameObject bossmanager;
+    [SerializeField] private GameObject spawner;
 
 
     private void Awake()
@@ -24,20 +29,27 @@ public class FirstBoss : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (youMayStart)
+        if (!bossfigthover)
         {
-            Vector2 direction = playerTransform.position - transform.position;
+            if (youMayStart)
+            {
+                Vector2 direction = playerTransform.position - transform.position;
 
-            // Calculate the angle to rotate the enemy
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+                // Calculate the angle to rotate the enemy
+                float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
-            // Apply the rotation to the enemy's transform
-            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-            Vector2 playerDirection = playerTransform.position - transform.position;
-            playerDirection = playerDirection.normalized;
-            StartCoroutine(TimeBetweenShoots(playerDirection));
+                // Apply the rotation to the enemy's transform
+                transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+                Vector2 playerDirection = playerTransform.position - transform.position;
+                playerDirection = playerDirection.normalized;
+                StartCoroutine(TimeBetweenShoots(playerDirection));
+            }
         }
-        
+        else
+        {
+            StartCoroutine(WinScrenn());
+        }
+
     }
 
     public void SetBool(bool active)
@@ -73,8 +85,10 @@ public class FirstBoss : MonoBehaviour
     
     public void JustDie()
     {
-        Destroy(this.gameObject);
-        StartCoroutine(WinScrenn());
+        sprite.enabled = false;
+        bossfigthover = true;
+        bossmanager.SetActive(false);
+        spawner.SetActive(false);
 
     }
 
