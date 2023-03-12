@@ -427,6 +427,10 @@ PrefabInstance:
       propertyPath: healthBarSpriteRight
       value: 
       objectReference: {fileID: 1445346638}
+    - target: {fileID: 6042282131985570064, guid: 32047d66a0692934a8855851e9e8f5de, type: 3}
+      propertyPath: reduceHealthOverTime
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 32047d66a0692934a8855851e9e8f5de, type: 3}
