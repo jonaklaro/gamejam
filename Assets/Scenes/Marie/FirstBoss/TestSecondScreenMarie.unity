@@ -450,7 +450,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &180723247
 Transform:
   m_ObjectHideFlags: 0
@@ -867,6 +867,9 @@ MonoBehaviour:
   bossStats: {fileID: 11400000, guid: 5e32bd310e183c24a8ea8468b4f4362a, type: 2}
   playerTransform: {fileID: 1731507825}
   shootingPos: {fileID: 1995663761}
+  sprite: {fileID: 504346930}
+  bossmanager: {fileID: 1497358096}
+  spawner: {fileID: 520521598}
 --- !u!212 &504346930
 SpriteRenderer:
   m_ObjectHideFlags: 0
