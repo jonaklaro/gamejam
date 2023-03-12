@@ -19,9 +19,10 @@ public class PlayerHealthTimer : MonoBehaviour
             Destroy(other.gameObject);
             GatherRessource(15f);
         } 
-        else if (other.gameObject.CompareTag("ProjectileEnemy"))
+        else if (other.gameObject.CompareTag("ProjectileEnemy") /*&& GetDistance(other.gameObject) < .2f*/)
         {
             TakeDamage(5);
+            other.gameObject.GetComponent<EnemyBullet>().DestroyBullet();
         }
     }
 
@@ -64,5 +65,5 @@ public class PlayerHealthTimer : MonoBehaviour
         GetComponent<PlayerShoot>().enabled = false;
         enabled = false;
     }
-    
+
 }

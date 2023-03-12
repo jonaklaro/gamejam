@@ -42,16 +42,17 @@ public class EnemyBullet : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D col)
+    public void DestroyBullet()
     {
         ParticleSystem particObject = Instantiate(particleSystem, transform.position, Quaternion.identity);
         ParticleSystem particle = particObject.GetComponent<ParticleSystem>();
         Destroy(particObject, particle.main.duration);
         Destroy(gameObject);
+    }
 
-        if (col.gameObject.tag.Equals("Player"))
-        {
-            playerHealthTimer.TakeDamage(timeLost);
-        }
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if(col.gameObject.CompareTag("Wall"))
+            DestroyBullet();
     }
 }

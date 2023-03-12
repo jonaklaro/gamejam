@@ -373,7 +373,7 @@ PrefabInstance:
       objectReference: {fileID: 1465988586}
     - target: {fileID: 6042282131985570064, guid: 32047d66a0692934a8855851e9e8f5de, type: 3}
       propertyPath: healthTimerMax
-      value: 10000
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 6042282131985570064, guid: 32047d66a0692934a8855851e9e8f5de, type: 3}
       propertyPath: healthBarSpriteLeft
