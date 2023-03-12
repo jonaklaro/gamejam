@@ -38,9 +38,7 @@ public class ArealAttackSpawner : MonoBehaviour
         for (int i = 0; i < spawningPoint.Length; i++)
         {
             spawningPoint[i] = this.transform.GetChild(i);
-            Collider2D areaCollider = spawningPoint[i].gameObject.GetComponent<Collider2D>();
-            areaCollider.enabled = false;
-           
+
         }
 
     }

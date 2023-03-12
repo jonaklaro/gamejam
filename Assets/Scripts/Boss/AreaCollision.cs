@@ -1,10 +1,9 @@
-using System;
 using UnityEngine;
 
 public class AreaCollision : MonoBehaviour
 {
     private PlayerHealthTimer playerHealthTimer;
-    private float timeLost = 20f;
+    private float timeLost = 5f;
     private GameObject player;
     private ParticleSystem[] arealEffect;
     [SerializeField] private ParticleSystem particleOne;
@@ -17,6 +16,8 @@ public class AreaCollision : MonoBehaviour
     [SerializeField] private ParticleSystem particleEight;
     private CircleCollider2D collider;
 
+    private bool effectActivated;
+
     private void Awake()
     {
         collider = GetComponent<CircleCollider2D>();
@@ -28,21 +29,23 @@ public class AreaCollision : MonoBehaviour
             particleEight
         };
 
-        
-        for (int i = 0; i < arealEffect.Length; i++)
-        {
-            ParticleSystem effekt = Instantiate(arealEffect[i],transform.position, Quaternion.identity);
-        }
-
+        effectActivated = true;
 
     }
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        
         if (col.gameObject.CompareTag("Player"))
         {
-           // MakeDamage();
+           
+            for (int i = 0; i < arealEffect.Length; i++)
+            {
+                ParticleSystem effekt = Instantiate(arealEffect[i],transform.position, Quaternion.identity);
+                effekt.gameObject.transform.localScale += new Vector3(4, 4, 4);
+
+            }
+
+            MakeDamage();
         }
     }
 
