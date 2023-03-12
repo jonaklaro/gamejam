@@ -76,10 +76,11 @@ public class FirstBoss : MonoBehaviour
 
   private void OnTriggerEnter2D(Collider2D col)
   {
-    if (col.gameObject.CompareTag("Projectile"))
-    {
-      bossHealth.TakeDamage(10);
-    }
+        if (col.gameObject.CompareTag("Projectile"))
+        {
+            bossHealth.TakeDamage(10);
+            col.gameObject.GetComponent<PlayerBullet>().DestroyBullet();
+        }
   }
 
   public void JustDie()
