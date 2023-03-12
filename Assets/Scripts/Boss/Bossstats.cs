@@ -4,7 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "BossContainer", menuName = "ScriptableObjects/Boss")]
 public class Bossstats : ScriptableObject
 {
-    [SerializeField] public int health;
+    [SerializeField] public float health;
     [SerializeField] public GameObject bullet;
     [SerializeField] public float timeDamage;
     [SerializeField] public float timer;

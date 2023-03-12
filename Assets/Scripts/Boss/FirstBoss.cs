@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -11,8 +12,13 @@ public class FirstBoss : MonoBehaviour
     private bool youMayStart = false;
     private bool isShooting;
     [SerializeField] private Transform shootingPos;
+    private BossHealth bossHealth;
 
-    
+
+    private void Awake()
+    {
+        bossHealth = GetComponent<BossHealth>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -60,22 +66,13 @@ public class FirstBoss : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Projectile"))
         {
-            GetDamage(10);
+            bossHealth.TakeDamage(10);
         }
     }
-
-    private void GetDamage(int damage)
+    
+    public void JustDie()
     {
-        bossStats.health -= damage;
-
-        if (bossStats.health < 1)
-        {
-            JustDie();
-        }
-    }
-
-    private void JustDie()
-    {
+        Debug.Log("Boss isdefeated");
         //abspielen von Animation
         //Destroy(this.gameObject);
         //Load new scene etc.
