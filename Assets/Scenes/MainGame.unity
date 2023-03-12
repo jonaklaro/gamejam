@@ -311,6 +311,10 @@ PrefabInstance:
       propertyPath: particThree
       value: 
       objectReference: {fileID: 7063044846023485686, guid: c6d65ba4ee4e3c749a7c5a3cc8cdb690, type: 3}
+    - target: {fileID: 370890261740299184, guid: 32047d66a0692934a8855851e9e8f5de, type: 3}
+      propertyPath: dashSpeed
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 370890261740299185, guid: 32047d66a0692934a8855851e9e8f5de, type: 3}
       propertyPath: m_Name
       value: Player
@@ -367,9 +371,17 @@ PrefabInstance:
       propertyPath: highscoreText
       value: 
       objectReference: {fileID: 1465988586}
+    - target: {fileID: 4694281306590166458, guid: 32047d66a0692934a8855851e9e8f5de, type: 3}
+      propertyPath: shootInterval
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4694281306590166458, guid: 32047d66a0692934a8855851e9e8f5de, type: 3}
+      propertyPath: projectileLifetime
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6042282131985570064, guid: 32047d66a0692934a8855851e9e8f5de, type: 3}
       propertyPath: healthTimer
-      value: 30
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 6042282131985570064, guid: 32047d66a0692934a8855851e9e8f5de, type: 3}
       propertyPath: highscoreText
@@ -377,7 +389,7 @@ PrefabInstance:
       objectReference: {fileID: 1465988586}
     - target: {fileID: 6042282131985570064, guid: 32047d66a0692934a8855851e9e8f5de, type: 3}
       propertyPath: healthTimerMax
-      value: 30
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 6042282131985570064, guid: 32047d66a0692934a8855851e9e8f5de, type: 3}
       propertyPath: healthBarSpriteLeft
@@ -414,7 +426,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 374298645}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8, y: 9.5, z: 0}
+  m_LocalPosition: {x: 4, y: 11, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -549,7 +561,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 481898733}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8, y: -9.5, z: 0}
+  m_LocalPosition: {x: -4, y: -12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -580,7 +592,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 520702990}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8, y: -9.5, z: 0}
+  m_LocalPosition: {x: 4, y: -12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -749,6 +761,10 @@ PrefabInstance:
     - target: {fileID: 52667340749685623, guid: 44789cd2bc7fc644da53f1d867c7bf93, type: 3}
       propertyPath: m_Name
       value: LevelLoader
+      objectReference: {fileID: 0}
+    - target: {fileID: 52667340749685623, guid: 44789cd2bc7fc644da53f1d867c7bf93, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -1159,7 +1175,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1329102858}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8, y: 9.5, z: 0}
+  m_LocalPosition: {x: -4, y: 12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1605,7 +1621,7 @@ GameObject:
   - component: {fileID: 1501052199}
   m_Layer: 0
   m_Name: Tilemap_Walls
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -22505,8 +22521,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c21b59164c4e63544a831c378b37e8a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 971938349552868488, guid: f2ec3db7aa0f51647a9f1bfde0c55cea, type: 3}
+  enemyPrefab: {fileID: 971938349552868488, guid: f2ec3db7aa0f51647a9f1bfde0c55cea, type: 3}
   enemySpawnRatePerMinute: 10
+  colliderTilemap: {fileID: 1501052201}
 --- !u!1001 &1836357482
 PrefabInstance:
   m_ObjectHideFlags: 0

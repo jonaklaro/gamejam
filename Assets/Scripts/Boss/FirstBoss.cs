@@ -56,6 +56,14 @@ public class FirstBoss : MonoBehaviour
 
     }
 
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.CompareTag("Projectile"))
+        {
+            GetDamage(10);
+        }
+    }
+
     private void GetDamage(int damage)
     {
         bossStats.health -= damage;
