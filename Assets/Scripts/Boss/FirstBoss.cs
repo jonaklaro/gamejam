@@ -24,6 +24,7 @@ public class FirstBoss : MonoBehaviour
   private void Awake()
   {
     bossHealth = GetComponent<BossHealth>();
+    Debug.Log(bossfigthover);
   }
 
   // Update is called once per frame
@@ -44,11 +45,9 @@ public class FirstBoss : MonoBehaviour
         playerDirection = playerDirection.normalized;
         StartCoroutine(TimeBetweenShoots(playerDirection));
       }
-      else
-      {
-        StartCoroutine(WinScrenn());
-      }
-
+    }else
+    {
+      StartCoroutine(WinScrenn());
     }
   }
 
@@ -86,9 +85,9 @@ public class FirstBoss : MonoBehaviour
   public void JustDie()
   {
     sprite.enabled = false;
-    bossfigthover = true;
     bossmanager.SetActive(false);
     spawner.SetActive(false);
+    bossfigthover = true;
 
   }
 
