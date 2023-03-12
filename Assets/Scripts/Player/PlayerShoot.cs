@@ -7,8 +7,9 @@ public class PlayerShoot : MonoBehaviour
   public GameObject projectilePrefab; // This is the prefab for the projectile we will shoot
   public float shootInterval = 5f; // The interval at which to shoot projectiles
   public float projectileLifetime = 5f; // The amount of time before the projectile disappears
-  private float lastShootTime = 0f; // The time at which we last shot a projectile
+  [HideInInspector] public bool isShooting = false;
 
+  private float lastShootTime = 0f; // The time at which we last shot a projectile
   private bool firstShotFired = false;
   private bool secondShotFired = false;
   SoundManager soundManager;
@@ -25,7 +26,6 @@ public class PlayerShoot : MonoBehaviour
 
   void Update()
   {
-
     //first click is 1/3 of the shoot interval
     float firstClick = shootInterval / 3;
     //second click is 2/3 of the shoot interval
@@ -51,6 +51,7 @@ public class PlayerShoot : MonoBehaviour
     }
     if (Time.time - lastShootTime >= shootInterval)
     {
+      isShooting = true;
       clip = soundManager.GetAudioClip("laser_gun");
       audioSource.clip = clip;
       audioSource.time = 0.15f;
@@ -61,8 +62,15 @@ public class PlayerShoot : MonoBehaviour
       lastShootTime = Time.time;
       firstShotFired = false;
       secondShotFired = false;
+            
     }
   }
+
+    IEnumerator StopShooting()
+    {
+        yield return new WaitForSeconds(shootInterval / 3f);
+        isShooting=false;
+    }
 
   void ShootProjectile()
   {
@@ -71,15 +79,18 @@ public class PlayerShoot : MonoBehaviour
 
     // Add a force to the projectile to make it move in the direction of the mouse
     Rigidbody2D projectileRb = newProjectile.GetComponent<Rigidbody2D>();
+    projectileRb.freezeRotation = true;
     Vector2 shootDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+         
     projectileRb.AddForce(shootDirection.normalized * 500f);
 
     // Rotate the projectile to face the direction of the mouse
     Vector3 direction = shootDirection.normalized;
     float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-    newProjectile.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+    newProjectile.transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
 
     // Destroy the projectile after its lifetime has expired
     Destroy(newProjectile, projectileLifetime);
+    StartCoroutine(StopShooting());
   }
 }

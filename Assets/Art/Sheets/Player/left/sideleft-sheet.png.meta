@@ -69,10 +69,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 256
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -121,8 +121,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4715a2c6606e1164f845eacd342fdcc5
-      internalID: -700952142
+      spriteID: b553b8ee67ddfe547b2256be05b43473
+      internalID: -201200214
       vertices: []
       indices: 
       edges: []
@@ -142,8 +142,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2ad29fb09957e6c4a8bc783c80172ed0
-      internalID: -1775636383
+      spriteID: 9a97081bb0533f945a21e6566fd76006
+      internalID: 1272928689
       vertices: []
       indices: 
       edges: []
@@ -163,8 +163,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ffe0b89b07c99664a8a3d8bd0a92f00d
-      internalID: -56981143
+      spriteID: 1fe05808d310b0340a0adb5391d72a2e
+      internalID: -1244486471
       vertices: []
       indices: 
       edges: []
@@ -184,8 +184,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 06a06b051f66e7f44b94cb4495d93112
-      internalID: -1553330932
+      spriteID: c931f6db065f1e24ca87686b67ef096c
+      internalID: -1707291514
       vertices: []
       indices: 
       edges: []
@@ -201,10 +201,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      sideleft-sheet_1: -1775636383
-      sideleft-sheet_2: -56981143
-      sideleft-sheet_3: -1553330932
-      sideleft-sheet_0: -700952142
+      sideleft-sheet_1: 1272928689
+      sideleft-sheet_2: -1244486471
+      sideleft-sheet_3: -1707291514
+      sideleft-sheet_0: -201200214
   spritePackingTag: 
   pSDRemoveMatte: 0
   userData: 
