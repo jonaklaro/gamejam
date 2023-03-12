@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -10,6 +8,12 @@ public class playerMovement : MonoBehaviour
     [SerializeField] Animator animator;
     Rigidbody2D rb;
     SoundManager soundManager;
+    
+    [SerializeField] private ParticleSystem particOne;
+    [SerializeField] private ParticleSystem particTwo;
+    [SerializeField] private ParticleSystem particThree;
+    [SerializeField] private ParticleSystem particFour;
+    private ParticleSystem[] particles;
     PlayerShoot playerShoot;
     [SerializeField] float dashSpeed = 20f;
     [SerializeField] float dashDuration = 0.2f;
@@ -21,6 +25,8 @@ public class playerMovement : MonoBehaviour
 
     private void Start()
     {
+        particles = new[] { particOne, particTwo, particThree, particFour };
+        soundManager = SoundManager.instance;
         rb = GetComponent<Rigidbody2D>();
         playerShoot = GetComponent<PlayerShoot>();
 
@@ -92,6 +98,13 @@ public class playerMovement : MonoBehaviour
         audioSource.clip = deathSound;
         Debug.Log("Death Sound: " + deathSound);
         audioSource.Play();
+
+        //particlesystem and playerobject destroy
+        for (int i = 0; i < particles.Length; i++)
+        {
+            ParticleSystem part = Instantiate(particles[i], transform.position, Quaternion.identity);
+        }
+       // Destroy(this.gameObject);
     }
 }
 

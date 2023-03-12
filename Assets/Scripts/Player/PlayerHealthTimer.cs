@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class PlayerHealthTimer : MonoBehaviour
 {
@@ -13,11 +10,7 @@ public class PlayerHealthTimer : MonoBehaviour
 
     [SerializeField] Image healthBarSpriteLeft = null;
     [SerializeField] Image healthBarSpriteRight = null;
-
-    int highscore = 0;
-
-    [SerializeField] TextMeshProUGUI highscoreText;
-
+    
     void OnTriggerEnter2D(Collider2D other)
     {
 
@@ -39,9 +32,6 @@ public class PlayerHealthTimer : MonoBehaviour
 
     void Update()
     {
-        highscore = (int)(Time.time * 10);
-        highscoreText.text = highscore.ToString();
-
         healthTimer -= Time.deltaTime;
         healthBarSpriteLeft.fillAmount = healthTimer / healthTimerMax;
         healthBarSpriteRight.fillAmount = healthBarSpriteLeft.fillAmount;
@@ -74,9 +64,5 @@ public class PlayerHealthTimer : MonoBehaviour
         GetComponent<PlayerShoot>().enabled = false;
         enabled = false;
     }
-
-    public void KilledEnemy()
-    {
-        highscore += 50;
-    }
+    
 }
