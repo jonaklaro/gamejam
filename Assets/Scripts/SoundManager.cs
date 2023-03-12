@@ -21,10 +21,12 @@ public class SoundManager : MonoBehaviour
     {
       Destroy(gameObject);
     }
-
-    DontDestroyOnLoad(gameObject);
-
     audioSource = GetComponent<AudioSource>();
+
+  }
+
+  private void Update() {
+    
   }
 
   public void PlaySoundEffect(string clipName)

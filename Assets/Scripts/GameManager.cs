@@ -12,6 +12,14 @@ public class GameManager : MonoBehaviour
   public bool hasLevelEnded = false;
   SoundManager soundManager;
 
+  //enum for the different states of the game
+  public enum GameState
+  {
+    Menu,
+    Playing,
+    GameOver
+  }
+
 
   private void Awake()
   {
@@ -37,22 +45,6 @@ public class GameManager : MonoBehaviour
 
   private void Update()
   {
-    bool allFriendsDroppedItem = true;
 
-    foreach (Friends friend in friends)
-    {
-      if (!friend.itemDropped)
-      {
-        allFriendsDroppedItem = false;
-        break;
-      }
-    }
-
-    if (allFriendsDroppedItem)
-    {
-      itemDropped = true;
-      hasLevelEnded = true;
-      Debug.Log("All friends have dropped the item - game over!");
-    }
   }
 }

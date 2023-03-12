@@ -10,7 +10,16 @@ public class PlayerHealthTimer : MonoBehaviour
 
     [SerializeField] Image healthBarSpriteLeft = null;
     [SerializeField] Image healthBarSpriteRight = null;
-    
+
+    int highscore = 0;
+
+    [SerializeField] TextMeshProUGUI highscoreText;
+    [SerializeField] LevelManager levelManager;
+
+    private void Start() {
+      healthTimer = Mathf.Min(healthTimer, healthTimerMax);
+    }
+
     void OnTriggerEnter2D(Collider2D other)
     {
 
@@ -18,6 +27,8 @@ public class PlayerHealthTimer : MonoBehaviour
         {
             Destroy(other.gameObject);
             GatherRessource(15f);
+            Debug.Log("Resource collected");
+            levelManager.CollectItem();
         } 
         else if (other.gameObject.CompareTag("ProjectileEnemy") /*&& GetDistance(other.gameObject) < .2f*/)
         {
@@ -26,10 +37,6 @@ public class PlayerHealthTimer : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        healthTimer = Mathf.Min(healthTimer, healthTimerMax);
-    }
 
     void Update()
     {
