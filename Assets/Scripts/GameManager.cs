@@ -13,12 +13,7 @@ public class GameManager : MonoBehaviour
   SoundManager soundManager;
 
   //enum for the different states of the game
-  public enum GameState
-  {
-    Menu,
-    Playing,
-    GameOver
-  }
+
 
 
   private void Awake()
@@ -35,9 +30,11 @@ public class GameManager : MonoBehaviour
 
   private void Start()
   {
-    soundManager = SoundManager.instance;
+    //get the sound manager from previous scene
+    soundManager = FindObjectOfType<SoundManager>();
     soundManager.SetVolume("MasterVolume", -20f);
-    //make a list with "8Bit1" and "8Bit2" and then randomly pick one of them
+    soundManager.SetVolume("MusicVolume", -5f);
+    soundManager.SetVolume("SFXVolume", 0);
     string randomMusic = "8Bit" + Random.Range(1, 3).ToString();
     Debug.Log("Random Music: " + randomMusic);
     soundManager.PlayMusic(randomMusic);
