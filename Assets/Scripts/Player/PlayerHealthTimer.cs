@@ -17,6 +17,11 @@ public class PlayerHealthTimer : MonoBehaviour
     int highscore = 0;
 
     [SerializeField] TextMeshProUGUI highscoreText;
+    [SerializeField] LevelManager levelManager;
+
+    private void Start() {
+      healthTimer = Mathf.Min(healthTimer, healthTimerMax);
+    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -25,6 +30,8 @@ public class PlayerHealthTimer : MonoBehaviour
         {
             Destroy(other.gameObject);
             GatherRessource(15f);
+            Debug.Log("Resource collected");
+            levelManager.CollectItem();
         } 
         else if (other.gameObject.CompareTag("ProjectileEnemy"))
         {
@@ -32,10 +39,6 @@ public class PlayerHealthTimer : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        healthTimer = Mathf.Min(healthTimer, healthTimerMax);
-    }
 
     void Update()
     {

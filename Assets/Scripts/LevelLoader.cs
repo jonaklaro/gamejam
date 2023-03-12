@@ -23,6 +23,11 @@ public class LevelLoader : MonoBehaviour
       LoadNextLevel();
     }
 
+    if (Input.GetKeyDown(KeyCode.E))
+    {
+      LoadNextLevel();
+    }
+
   }
 
   public void LoadNextLevel()
