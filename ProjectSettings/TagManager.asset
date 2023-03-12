@@ -11,6 +11,7 @@ TagManager:
   - ProjectileEnemy
   - Explosion
   - Wall
+  - Music
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - Entities
   - Resources
   - Obstacle
-  - 
+  - Post Processing
   - 
   - 
   - 
