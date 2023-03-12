@@ -55,12 +55,7 @@ public class ArealAttackSpawner : MonoBehaviour
             if (distance < range)
             {
                 ActivateArea(spawningPoint[i].gameObject);
-                /*if (!isHot)
-                {
-                    isHot = true;
-                    ActivateArea(spawningPoint[i].gameObject);
-                }*/
-                
+             
             }
 
         }
@@ -68,13 +63,11 @@ public class ArealAttackSpawner : MonoBehaviour
 
     private void ActivateArea(GameObject spawnPoint)
     {
-        /*for (int i = 0; i < arealEffect.Length; i++)
-        {
-            ParticleSystem effekt = Instantiate(arealEffect[i], spawnPoint.transform.position, Quaternion.identity);
-        }
-        */
 
-        StartCoroutine(TimeTillColliderIsON(spawnPoint));
+        AreaCollision area = spawnPoint.GetComponent<AreaCollision>();
+        area.gameObject.SetActive(true);
+        Debug.Log("Ich  starte");
+        StartCoroutine(TimeTillColliderIsOFF(spawnPoint));
     }
 
     private float GetDistance(Vector2 spawningPoint)
@@ -83,19 +76,19 @@ public class ArealAttackSpawner : MonoBehaviour
         return distance;
     }
 
-    private IEnumerator TimeTillColliderIsON(GameObject area)
+    /*private IEnumerator TimeTillColliderIsON(GameObject area)
     {
+        Debug.Log("bin in der nächsten Methode");
         yield return new WaitForSeconds(timeTillCollider);
         ActivateCollider(area);
-    }
+    }*/
 
-    private void ActivateCollider(GameObject area)
+    /*private void ActivateCollider(GameObject area)
     {
         Collider2D areaCollider = area.gameObject.GetComponent<Collider2D>();
         areaCollider.enabled = true;
-        //effect.SetActive(false);
         StartCoroutine(TimeTillColliderIsOFF(area));
-    }
+    }*/
 
     private IEnumerator TimeTillColliderIsOFF(GameObject area)
     {
@@ -105,10 +98,8 @@ public class ArealAttackSpawner : MonoBehaviour
 
     private void DeactivateCollider(GameObject area)
     {
-        Collider2D areaCollider = area.gameObject.GetComponent<Collider2D>();
-        areaCollider.enabled = false;
-        SpriteRenderer sprite = area.gameObject.GetComponent<SpriteRenderer>();
-        sprite.color = Color.white;
+        AreaCollision areaCollision = area.GetComponent<AreaCollision>();
+        areaCollision.gameObject.SetActive(false);
         StartCoroutine(WaitTillItsCold());
     }
 

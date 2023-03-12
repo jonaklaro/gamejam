@@ -28,14 +28,12 @@ public class AreaCollision : MonoBehaviour
             particleEight
         };
 
-        if (collider.enabled == true)
-        {
-            for (int i = 0; i < arealEffect.Length; i++)
-            {
-                ParticleSystem effekt = Instantiate(arealEffect[i],transform.position, Quaternion.identity);
-            }
-        }
         
+        for (int i = 0; i < arealEffect.Length; i++)
+        {
+            ParticleSystem effekt = Instantiate(arealEffect[i],transform.position, Quaternion.identity);
+        }
+
 
     }
 
