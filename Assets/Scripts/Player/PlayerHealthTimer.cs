@@ -15,8 +15,6 @@ public class PlayerHealthTimer : MonoBehaviour
     [SerializeField] Image healthBarSpriteRight = null;
 
     int highscore = 0;
-
-    [SerializeField] TextMeshProUGUI highscoreText;
     [SerializeField] LevelManager levelManager;
 
     private void Start() {
@@ -89,3 +87,4 @@ public class PlayerHealthTimer : MonoBehaviour
     }
 
 }
+
