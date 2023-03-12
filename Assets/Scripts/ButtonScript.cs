@@ -9,7 +9,7 @@ public class ButtonScript : MonoBehaviour
 
     public void StartButton()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(3);
     }
 
     public void ReturnButton()
@@ -19,12 +19,12 @@ public class ButtonScript : MonoBehaviour
 
     public void ControlButton()
     {
-        //SceneManager.LoadScene();
+        SceneManager.LoadScene(1);
     }
 
     public void CreditsButton()
     {
-        //SceneManager.LoadScene();
+        SceneManager.LoadScene(2);
     }
 
     public void ExitButton()
