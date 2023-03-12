@@ -45,7 +45,7 @@ public class BossManager : MonoBehaviour
     private IEnumerator BossFightStart()
     {
         animator.SetBool("CoolDown", false);
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(3);
         StartCoroutine(StartShootPhase());
     }
     
