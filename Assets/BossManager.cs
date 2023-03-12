@@ -22,7 +22,7 @@ public class BossManager : MonoBehaviour
         spawner.SetActive(true);
         bossShoot.SetBool(false);
         yield return new WaitForSeconds(timeUntilNextPhase);
-        StartCoroutine(StartShootPhase());
+        StartCoroutine(BossFightStart());
     }
     
     private IEnumerator StartShootPhase()

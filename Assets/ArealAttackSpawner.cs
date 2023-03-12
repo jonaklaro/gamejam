@@ -101,5 +101,6 @@ public class ArealAttackSpawner : MonoBehaviour
         yield return new WaitForSeconds(areaCoolDown);
         isHot = false;
     }
+    
 
 }
