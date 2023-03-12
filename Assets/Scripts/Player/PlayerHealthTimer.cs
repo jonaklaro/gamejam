@@ -6,6 +6,9 @@ public class PlayerHealthTimer : MonoBehaviour
     [SerializeField] float healthTimer = 30f;
     [SerializeField] float healthTimerMax = 60f;
 
+    [SerializeField] Color color1;
+    [SerializeField] Color color2;
+
     [SerializeField] playerMovement playerMovement;
 
     [SerializeField] Image healthBarSpriteLeft = null;
@@ -41,8 +44,12 @@ public class PlayerHealthTimer : MonoBehaviour
     void Update()
     {
         healthTimer -= Time.deltaTime;
-        healthBarSpriteLeft.fillAmount = healthTimer / healthTimerMax;
-        healthBarSpriteRight.fillAmount = healthBarSpriteLeft.fillAmount;
+        float fillAmount = healthTimer / healthTimerMax;
+        healthBarSpriteLeft.fillAmount = fillAmount;
+        healthBarSpriteLeft.color = LerpColor(color2, color1, fillAmount);
+
+        healthBarSpriteRight.fillAmount = fillAmount;
+        healthBarSpriteRight.color = LerpColor(color2, color1, fillAmount);
 
         if (healthTimer < 0)
             Die();
@@ -71,6 +78,14 @@ public class PlayerHealthTimer : MonoBehaviour
         playerMovement.Die();
         GetComponent<PlayerShoot>().enabled = false;
         enabled = false;
+    }
+
+    Color LerpColor(Color  c1, Color c2, float t)
+    {
+        return new Color(
+            Mathf.Lerp(c1.r, c2.r, t),
+            Mathf.Lerp(c1.g, c2.g, t),
+            Mathf.Lerp(c1.b, c2.b, t));
     }
 
 }
