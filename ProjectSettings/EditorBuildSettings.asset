@@ -26,4 +26,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Marie/FirstBoss/TestSecondScreenMarie.unity
     guid: a6f0f9292103e8746b6bbb4a23d9de18
+<<<<<<< Updated upstream
+=======
+  - enabled: 0
+    path: Assets/Scenes/Jona/TestSecondScreen.unity
+    guid: d6f79d8ae7ea4624aabdf692f74f4a66
+>>>>>>> Stashed changes
   m_configObjects: {}
