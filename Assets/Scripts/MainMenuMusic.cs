@@ -8,13 +8,14 @@ public class MainMenuMusic : MonoBehaviour
 
   private void Start()
   {
-    //if sound manager not null
+    //get the sound manager, if it's not already set
     if (soundManager == null)
     {
-      //get the sound manager from previous scene
       soundManager = FindObjectOfType<SoundManager>();
-      //play the music
-      soundManager.PlayMusic("Lobby");
     }
+    soundManager.SetVolume("MasterVolume", -20f);
+    soundManager.SetVolume("MusicVolume", -5f);
+    soundManager.SetVolume("SFXVolume", 0);
+    soundManager.PlayMusic("Lobby");
   }
 }
