@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
 public class FirstBoss : MonoBehaviour
@@ -72,9 +73,14 @@ public class FirstBoss : MonoBehaviour
     
     public void JustDie()
     {
-        Debug.Log("Boss isdefeated");
-        //abspielen von Animation
-        //Destroy(this.gameObject);
-        //Load new scene etc.
+        Destroy(this.gameObject);
+        StartCoroutine(WinScrenn());
+
+    }
+
+    private IEnumerator WinScrenn()
+    {
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene(4);
     }
 }

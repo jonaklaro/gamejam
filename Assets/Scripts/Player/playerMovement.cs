@@ -1,5 +1,6 @@
+using System.Collections;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 
 
 public class playerMovement : MonoBehaviour
@@ -8,6 +9,7 @@ public class playerMovement : MonoBehaviour
     [SerializeField] Animator animator;
     Rigidbody2D rb;
     SoundManager soundManager;
+    [SerializeField] private SpriteRenderer sprite;
     
     [SerializeField] private ParticleSystem particOne;
     [SerializeField] private ParticleSystem particTwo;
@@ -106,7 +108,15 @@ public class playerMovement : MonoBehaviour
         {
             ParticleSystem part = Instantiate(particles[i], transform.position, Quaternion.identity);
         }
-       // Destroy(this.gameObject);
+
+        sprite.enabled = false;
+        StartCoroutine(LooseScreen());
+    }
+
+    private IEnumerator LooseScreen()
+    {
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene(4);
     }
 }
 
