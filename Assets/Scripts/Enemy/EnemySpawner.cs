@@ -23,10 +23,9 @@ public class EnemySpawner : MonoBehaviour
         spawnPoints.RemoveAt(0);
 
 
-        TileBase[] tileBases = colliderTilemap.GetTilesBlock(colliderTilemap.cellBounds);
+        //Get all ColliderTiles and store them in list
         BoundsInt cellBounds = colliderTilemap.cellBounds;
         
-        int i = -1;
         for(int x = cellBounds.xMin; x < cellBounds.xMax; x++)
         {
             for(int y = cellBounds.yMin; y < cellBounds.yMax; y++)
@@ -37,11 +36,6 @@ public class EnemySpawner : MonoBehaviour
                 colliderTilePositions.Add(new Vector3Int(x, y));
             }
         }
-
-/*        foreach (Vector3Int pos in colliderTilePositions)
-        {
-            Debug.Log(pos);
-        }*/
     }
 
     // Update is called once per frame
