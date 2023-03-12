@@ -613,6 +613,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 370890261740299184, guid: 32047d66a0692934a8855851e9e8f5de, type: 3}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: 1731507833}
     - target: {fileID: 370890261740299185, guid: 32047d66a0692934a8855851e9e8f5de, type: 3}
       propertyPath: m_Name
       value: Player
@@ -660,6 +664,10 @@ PrefabInstance:
     - target: {fileID: 370890261740299186, guid: 32047d66a0692934a8855851e9e8f5de, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 370890261740299187, guid: 32047d66a0692934a8855851e9e8f5de, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3941343736418143467, guid: 32047d66a0692934a8855851e9e8f5de, type: 3}
       propertyPath: highsoreText
@@ -22921,6 +22929,11 @@ GameObject:
 --- !u!4 &1731507825 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 370890261740299186, guid: 32047d66a0692934a8855851e9e8f5de, type: 3}
+  m_PrefabInstance: {fileID: 309093132}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &1731507833 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 370890261740299187, guid: 32047d66a0692934a8855851e9e8f5de, type: 3}
   m_PrefabInstance: {fileID: 309093132}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1836357482

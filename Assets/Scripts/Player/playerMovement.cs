@@ -116,7 +116,7 @@ public class playerMovement : MonoBehaviour
     private IEnumerator LooseScreen()
     {
         yield return new WaitForSeconds(3);
-        SceneManager.LoadScene(4);
+        SceneManager.LoadScene(3);
     }
 }
 
