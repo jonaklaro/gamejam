@@ -7,7 +7,7 @@ public class AreaCollision : MonoBehaviour
     private float timeLost = 20f;
     private GameObject player;
 
-    private void Start()
+    private void Awake()
     {
         player = GameObject.FindWithTag("Player");
         playerHealthTimer = player.GetComponent<PlayerHealthTimer>();

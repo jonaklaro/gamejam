@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -13,10 +12,7 @@ public class FirstBoss : MonoBehaviour
     private bool isShooting;
     [SerializeField] private Transform shootingPos;
 
-    private void Awake()
-    {
-        StartCoroutine(WaitUntilYouCanStart());
-    }
+    
 
     // Update is called once per frame
     void Update()
@@ -36,6 +32,11 @@ public class FirstBoss : MonoBehaviour
         }
         
     }
+
+    public void SetBool(bool active)
+    {
+        youMayStart = active;
+    }
     
     private IEnumerator TimeBetweenShoots(Vector2 playerDir)
     {
@@ -47,12 +48,7 @@ public class FirstBoss : MonoBehaviour
         isShooting = false;
 
     }
-
-    private IEnumerator WaitUntilYouCanStart()
-    {
-        yield return new WaitForSeconds(5);
-        youMayStart = true;
-    }
+    
     private void StartShooting(Vector2 playerDir)
     {
         Vector3 bulletPos = transform.position + new Vector3(playerDir.x, playerDir.y, 0);

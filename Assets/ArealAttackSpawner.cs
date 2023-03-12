@@ -18,7 +18,7 @@ public class ArealAttackSpawner : MonoBehaviour
     private bool isHot;
 
 
-    private void Start()
+    private void Awake()
     {
         spawningPoint = new Transform[index];
         for (int i = 0; i < spawningPoint.Length; i++)
