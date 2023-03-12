@@ -1,13 +1,9 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BossManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    [SerializeField] private bool shootPhase;
-    [SerializeField] private bool arealPhase;
+    
     [SerializeField] private float timeUntilNextPhase;
 
     [SerializeField] private FirstBoss bossShoot;
@@ -21,46 +17,25 @@ public class BossManager : MonoBehaviour
         spawner.SetActive(false);
     }
 
-    
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-        if (shootPhase)
-        {
-            bossShoot.SetBool(true);
-            spawner.SetActive(false);
-            StartCoroutine(StartArealPhase());
-        }
-
-        if (arealPhase)
-        {
-            Debug.Log("Neuephase");
-            spawner.SetActive(true);
-            bossShoot.SetBool(false);
-            StartCoroutine(StartShootPhase());
-        }
-
-    }
-
     private IEnumerator StartArealPhase()
     {
+        spawner.SetActive(true);
+        bossShoot.SetBool(false);
         yield return new WaitForSeconds(timeUntilNextPhase);
-        shootPhase = false;
-        arealPhase = true;
+        StartCoroutine(StartShootPhase());
     }
     
     private IEnumerator StartShootPhase()
     {
+        bossShoot.SetBool(true);
+        spawner.SetActive(false);
         yield return new WaitForSeconds(timeUntilNextPhase);
-        shootPhase = true;
-        arealPhase = false;
+        StartCoroutine(StartArealPhase());
     }
 
     private IEnumerator BossFightStart()
     {
         yield return new WaitForSeconds(5);
-        shootPhase = true;
+        StartCoroutine(StartShootPhase());
     }
 }
