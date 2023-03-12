@@ -27,10 +27,6 @@ public class NewEnemyMovement : MonoBehaviour
             animator.SetBool("IsShooting", true);
 
         }
-        else if (other.gameObject.CompareTag("Projectile") && GetDistance(other.gameObject) < 1.2f)
-        {
-            Die();
-        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -146,11 +142,7 @@ public class NewEnemyMovement : MonoBehaviour
         return surroundingTiles[tileIndex].pos;
     }
 
-    float GetDistance(GameObject other)
-    {
-        Vector3 vecBetweenObjects = transform.position - other.transform.position;
-        return vecBetweenObjects.magnitude;
-    }
+    
 
     float GetDistance(Vector3 other)
     {

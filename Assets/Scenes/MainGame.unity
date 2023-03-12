@@ -355,9 +355,17 @@ PrefabInstance:
       propertyPath: highscoreText
       value: 
       objectReference: {fileID: 1465988586}
+    - target: {fileID: 4694281306590166458, guid: 32047d66a0692934a8855851e9e8f5de, type: 3}
+      propertyPath: shootInterval
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4694281306590166458, guid: 32047d66a0692934a8855851e9e8f5de, type: 3}
+      propertyPath: projectileLifetime
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6042282131985570064, guid: 32047d66a0692934a8855851e9e8f5de, type: 3}
       propertyPath: healthTimer
-      value: 30
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 6042282131985570064, guid: 32047d66a0692934a8855851e9e8f5de, type: 3}
       propertyPath: highscoreText
@@ -365,7 +373,7 @@ PrefabInstance:
       objectReference: {fileID: 1465988586}
     - target: {fileID: 6042282131985570064, guid: 32047d66a0692934a8855851e9e8f5de, type: 3}
       propertyPath: healthTimerMax
-      value: 30
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 6042282131985570064, guid: 32047d66a0692934a8855851e9e8f5de, type: 3}
       propertyPath: healthBarSpriteLeft
@@ -1597,7 +1605,7 @@ GameObject:
   - component: {fileID: 1501052199}
   m_Layer: 0
   m_Name: Tilemap_Walls
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

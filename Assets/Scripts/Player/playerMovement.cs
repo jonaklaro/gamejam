@@ -24,8 +24,6 @@ public class playerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         playerShoot = GetComponent<PlayerShoot>();
 
-        
-
         //Rotation Lock
         rb.freezeRotation = true;
     }
