@@ -26,8 +26,7 @@ public class ArealAttackSpawner : MonoBehaviour
             spawningPoint[i] = this.transform.GetChild(i);
             Collider2D areaCollider = spawningPoint[i].gameObject.GetComponent<Collider2D>();
             areaCollider.enabled = false;
-            
-            Debug.Log(spawningPoint);
+           
         }
 
     }
@@ -54,10 +53,9 @@ public class ArealAttackSpawner : MonoBehaviour
 
     private void ActivateArea(GameObject spawnPoint)
     {
-        SpriteRenderer sprite = spawnPoint.GetComponent<SpriteRenderer>();
-        sprite.color = Color.green;
-        StartCoroutine(TimeTillColliderIsON(spawnPoint));
-        //Arealeffect starten
+        GameObject effect = spawnPoint.transform.GetChild(0).gameObject;
+        effect.SetActive(true);
+        StartCoroutine(TimeTillColliderIsON(spawnPoint, effect));
     }
 
     private float GetDistance(Vector2 spawningPoint)
@@ -66,18 +64,17 @@ public class ArealAttackSpawner : MonoBehaviour
         return distance;
     }
 
-    private IEnumerator TimeTillColliderIsON(GameObject area)
+    private IEnumerator TimeTillColliderIsON(GameObject area, GameObject effekt)
     {
         yield return new WaitForSeconds(timeTillCollider);
-        ActivateCollider(area);
+        ActivateCollider(area, effekt);
     }
 
-    private void ActivateCollider(GameObject area)
+    private void ActivateCollider(GameObject area, GameObject effect)
     {
-        SpriteRenderer sprite = area.GetComponent<SpriteRenderer>();
-        sprite.color = Color.red;
         Collider2D areaCollider = area.gameObject.GetComponent<Collider2D>();
         areaCollider.enabled = true;
+        effect.SetActive(false);
         StartCoroutine(TimeTillColliderIsOFF(area));
     }
 
@@ -100,6 +97,7 @@ public class ArealAttackSpawner : MonoBehaviour
     {
         yield return new WaitForSeconds(areaCoolDown);
         isHot = false;
+        Debug.Log(isHot);
     }
     
 
