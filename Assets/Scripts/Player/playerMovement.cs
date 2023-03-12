@@ -92,7 +92,7 @@ public class playerMovement : MonoBehaviour
         rb.velocity = Vector3.zero;
         enabled = false;
 
-        AudioClip deathSound = soundManager.GetAudioClip("Explosion_Tiny_4");
+        AudioClip deathSound = soundManager.GetAudioClip("bigExplosion");
         //get AudioSource component and play death sound
         AudioSource audioSource = GetComponent<AudioSource>();
         audioSource.clip = deathSound;

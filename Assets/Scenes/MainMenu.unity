@@ -484,10 +484,30 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4993349934501590336, guid: 15196bf2e4729eb4a8f37504bf679ecc, type: 3}
+      propertyPath: audioClips.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993349934501590336, guid: 15196bf2e4729eb4a8f37504bf679ecc, type: 3}
+      propertyPath: audioClips.Array.data[7]
+      value: 
+      objectReference: {fileID: 8300000, guid: 4718d90dc80513243a7e50968d9ee899, type: 3}
+    - target: {fileID: 4993349934501590336, guid: 15196bf2e4729eb4a8f37504bf679ecc, type: 3}
+      propertyPath: audioClips.Array.data[8]
+      value: 
+      objectReference: {fileID: 8300000, guid: 393217870bd711546b91c8eabc87461b, type: 3}
     - target: {fileID: 4993349934501590349, guid: 15196bf2e4729eb4a8f37504bf679ecc, type: 3}
       propertyPath: m_Name
       value: SoundManager
       objectReference: {fileID: 0}
+    - target: {fileID: 4993349934501590350, guid: 15196bf2e4729eb4a8f37504bf679ecc, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993349934501590350, guid: 15196bf2e4729eb4a8f37504bf679ecc, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 8396531311609004267, guid: 64aa739efc69cc84392d881f5925b527, type: 2}
     - target: {fileID: 4993349934501590351, guid: 15196bf2e4729eb4a8f37504bf679ecc, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -817,7 +837,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   alphonso: {fileID: 93794266}
-  soundManager: {fileID: 2061518889}
 --- !u!4 &1408979980
 Transform:
   m_ObjectHideFlags: 0
